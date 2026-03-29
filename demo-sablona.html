@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Asistent — Demo pre NAZOV_FIRMY</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--dark:#0f0f13;--dark2:#16161d;--accent:#c8a97e;--text:#f0ece4;--muted:#888;--muted2:#bbb;--border:rgba(200,169,126,0.15);--border2:rgba(240,236,228,0.1);--green:#2d9e6b}
+body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+.demo-wrap{width:100%;max-width:480px}
+.demo-header{text-align:center;margin-bottom:32px}
+.demo-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,169,126,.1);border:1px solid var(--border);color:var(--accent);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:16px}
+.demo-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.demo-title{font-size:22px;font-weight:500;color:var(--text);margin-bottom:6px}
+.demo-sub{font-size:13px;color:var(--muted2)}
+.chat-box{background:var(--dark2);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.chat-topbar{background:rgba(200,169,126,.07);padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.chat-avatar{width:34px;height:34px;border-radius:50%;background:rgba(200,169,126,.2);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.chat-name{font-size:13px;font-weight:500;color:var(--text)}
+.chat-status{font-size:11px;color:var(--accent)}
+.chat-dot{width:6px;height:6px;border-radius:50%;background:var(--green);margin-left:auto;animation:blink 2s infinite}
+.chat-messages{padding:16px;min-height:300px;max-height:400px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.chat-messages::-webkit-scrollbar{width:3px}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--border)}
+.cm{display:flex}
+.cm.user{justify-content:flex-end}
+.cm-bubble{max-width:82%;padding:10px 14px;font-size:13.5px;line-height:1.55}
+.cm.bot .cm-bubble{background:rgba(240,236,228,.07);color:var(--text);border-radius:14px 14px 14px 3px}
+.cm.user .cm-bubble{background:var(--accent);color:#1a1108;border-radius:14px 14px 3px 14px}
+.typing-dots{display:flex;gap:4px;padding:10px 14px;background:rgba(240,236,228,.07);border-radius:14px 14px 14px 3px;width:fit-content}
+.typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:tdot 1.2s ease-in-out infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(.4);opacity:.4}40%{transform:scale(1);opacity:1}}
+.chat-inputbar{padding:12px 14px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:center}
+.chat-input{flex:1;background:rgba(240,236,228,.05);border:1px solid var(--border);border-radius:8px;padding:10px 13px;color:var(--text);font-size:13.5px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+.chat-input:focus{border-color:rgba(200,169,126,.45)}
+.chat-input::placeholder{color:var(--muted)}
+.chat-send{width:38px;height:38px;border-radius:8px;background:var(--accent);border:none;color:#1a1108;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
+.chat-send:hover{opacity:.85}
+.chat-send:disabled{background:rgba(200,169,126,.25);cursor:not-allowed}
+.demo-footer{text-align:center;margin-top:20px;font-size:12px;color:var(--muted)}
+.demo-footer a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="demo-wrap">
+  <div class="demo-header">
+    <div class="demo-badge">Demo chatbot</div>
+    <div class="demo-title" id="demo-title">NAZOV_FIRMY</div>
+    <div class="demo-sub">Toto je ukážka AI chatbota nastaveného pre váš biznis</div>
+  </div>
+
+  <div class="chat-box">
+    <div class="chat-topbar">
+      <div class="chat-avatar" id="chat-avatar">🤖</div>
+      <div>
+        <div class="chat-name" id="chat-name">AI Asistent</div>
+        <div class="chat-status">Online</div>
+      </div>
+      <div class="chat-dot"></div>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-inputbar">
+      <input class="chat-input" id="chat-input" placeholder="Napíšte otázku..." onkeydown="if(event.key==='Enter'){event.preventDefault();chatSend()}"/>
+      <button class="chat-send" id="chat-send" onclick="chatSend()">↑</button>
+    </div>
+  </div>
+
+  <div class="demo-footer">
+    Powered by <a href="https://axiona-group.sk">Axiona Group</a>
+  </div>
+</div>
+
+<script>
+// =====================================================
+// ZMEN TIETO 3 VECI PRE KAZDEHO KLIENTA:
+var BOT_NAME    = 'AI Asistent';          // Meno bota
+var BOT_AVATAR  = '🤖';                   // Emoji
+var BOT_GREETING = 'Dobrý deň! Ako vám môžem pomôcť?'; // Uvítanie
+
+var SYSTEM_PROMPT = `
+Tu vloz system prompt klienta.
+Napr: Si AI asistent pre firmu XYZ.
+Odpovedas vzdy po slovensky.
+Poznas tieto sluzby: ...
+FAQ: ...
+`;
+// =====================================================
+
+var WORKER_URL = 'https://axiona-proxy.mdominik01.workers.dev';
+
+// Nastav UI
+document.getElementById('chat-name').textContent = BOT_NAME;
+document.getElementById('chat-avatar').textContent = BOT_AVATAR;
+document.getElementById('demo-title').textContent = BOT_NAME;
+
+var messages = [{role:'assistant', content:BOT_GREETING}];
+var loading = false;
+
+function renderMessages(typing){
+  var c = document.getElementById('chat-messages');
+  var html = messages.map(function(m){
+    return '<div class="cm '+(m.role==='user'?'user':'bot')+'"><div class="cm-bubble">'+esc(m.content)+'</div></div>';
+  }).join('');
+  if(typing) html += '<div class="cm bot"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+  c.innerHTML = html;
+  c.scrollTop = c.scrollHeight;
+  document.getElementById('chat-send').disabled = !!typing;
+}
+
+async function chatSend(){
+  var input = document.getElementById('chat-input');
+  var text = input.value.trim();
+  if(!text || loading) return;
+  input.value = '';
+  loading = true;
+  messages.push({role:'user', content:text});
+  renderMessages(true);
+  try{
+    var res = await fetch(WORKER_URL + '/chat', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:SYSTEM_PROMPT,
+        messages:messages.map(function(m){return{role:m.role,content:m.content};})
+      })
+    });
+    var data = await res.json();
+    var reply = (data.content&&data.content[0]&&data.content[0].text)||'Prepáčte, nastala chyba.';
+    messages.push({role:'assistant',content:reply});
+  }catch(e){
+    messages.push({role:'assistant',content:'Prepáčte, nastala technická chyba.'});
+  }
+  loading = false;
+  renderMessages(false);
+}
+
+function esc(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+renderMessages(false);
+</script>
+</body>
+</html>
