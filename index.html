@@ -278,6 +278,44 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 .cm-modal-btns{display:flex;gap:10px;margin-top:24px}
 .cm-save-btn{flex:1;background:#c8a97e;color:#1a1108;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;padding:11px;border-radius:7px;border:none;cursor:pointer}
 .cm-close-btn{flex:1;background:transparent;color:#888;font-family:'DM Sans',sans-serif;font-size:13px;padding:11px;border-radius:7px;border:1px solid rgba(240,236,228,.12);cursor:pointer}
+
+/* ANIMATED DEMO SECTION */
+.animated-demo-section{padding:80px 24px}
+.demo-flow-outer{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:52px;max-width:860px;margin-left:auto;margin-right:auto;align-items:start}
+.demo-flow-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.animated-chat-wrap{background:var(--dark2);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.animated-chat-top{background:rgba(200,169,126,.07);padding:12px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.act-avatar{width:28px;height:28px;border-radius:50%;background:rgba(200,169,126,.2);display:flex;align-items:center;justify-content:center;font-size:12px}
+.act-name{font-size:13px;font-weight:500;color:var(--text)}
+.act-status{font-size:11px;color:var(--accent)}
+.act-dot{width:6px;height:6px;border-radius:50%;background:var(--green);margin-left:auto;animation:blink 2s infinite}
+.animated-chat-msgs{padding:14px;height:260px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.animated-chat-msgs::-webkit-scrollbar{width:3px}
+.animated-chat-msgs::-webkit-scrollbar-thumb{background:var(--border)}
+.acm{display:flex}
+.acm.user{justify-content:flex-end}
+.acm-bubble{max-width:80%;padding:8px 12px;font-size:12.5px;line-height:1.55}
+.acm.bot .acm-bubble{background:rgba(240,236,228,.07);color:var(--text);border-radius:12px 12px 12px 3px}
+.acm.user .acm-bubble{background:var(--accent);color:#1a1108;border-radius:12px 12px 3px 12px}
+.acm-typing{display:flex;gap:4px;padding:8px 12px;background:rgba(240,236,228,.07);border-radius:12px 12px 12px 3px;width:fit-content}
+.acm-typing span{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:tdot 1.2s ease-in-out infinite}
+.acm-typing span:nth-child(2){animation-delay:.2s}
+.acm-typing span:nth-child(3){animation-delay:.4s}
+.flow-steps{display:flex;flex-direction:column;gap:0}
+.flow-step{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--border2);border-radius:10px;background:rgba(240,236,228,.02);transition:all .5s}
+.flow-step.active{border-color:rgba(200,169,126,.6);background:rgba(200,169,126,.08)}
+.flow-step.done{border-color:rgba(45,158,107,.5);background:rgba(45,158,107,.05)}
+.fs-icon{font-size:18px;flex-shrink:0}
+.fs-title{font-size:13px;font-weight:500;color:var(--text)}
+.fs-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.fs-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);margin-left:auto;flex-shrink:0;transition:all .5s;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent}
+.flow-step.active .fs-dot{border-color:var(--accent);background:rgba(200,169,126,.2);animation:pulse-dot 1s ease infinite}
+.flow-step.done .fs-dot{border-color:var(--green);background:var(--green);color:#fff}
+@keyframes pulse-dot{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.flow-line{width:2px;height:14px;background:var(--border2);margin:2px 0 2px 22px;transition:background .5s}
+.flow-line.done{background:var(--green)}
+.demo-restart-note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:20px;font-style:italic}
+@media(max-width:768px){.demo-flow-outer{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -477,6 +515,40 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 </section>
 
 <!-- REFERENCIE -->
+
+<section class="animated-demo-section">
+  <div class="container">
+    <div class="section-label">Ukážka v akcii</div>
+    <div class="section-title">Takto to funguje v praxi</div>
+    <p class="section-sub">Záujemca zadá kontakt v chate — celý zvyšok prebehne automaticky bez vášho zásahu.</p>
+    <div class="demo-flow-outer">
+      <div>
+        <div class="demo-flow-label">💬 Konverzácia</div>
+        <div class="animated-chat-wrap">
+          <div class="animated-chat-top">
+            <div class="act-avatar">🏠</div>
+            <div><div class="act-name">Realitný asistent</div><div class="act-status">AI asistent</div></div>
+            <div class="act-dot"></div>
+          </div>
+          <div class="animated-chat-msgs" id="anim-chat"></div>
+        </div>
+      </div>
+      <div>
+        <div class="demo-flow-label">⚡ Automatizácia</div>
+        <div class="flow-steps">
+          <div class="flow-step" id="fs1"><div class="fs-icon">📥</div><div><div class="fs-title">Kontakt zachytený</div><div class="fs-sub">Údaje sa uložia do evidencie</div></div><div class="fs-dot" id="fd1"></div></div>
+          <div class="flow-line" id="fl1"></div>
+          <div class="flow-step" id="fs2"><div class="fs-icon">📧</div><div><div class="fs-title">Záujemca dostane email</div><div class="fs-sub">Automatické potvrdenie do sekúnd</div></div><div class="fs-dot" id="fd2"></div></div>
+          <div class="flow-line" id="fl2"></div>
+          <div class="flow-step" id="fs3"><div class="fs-icon">🔔</div><div><div class="fs-title">Vy dostanete upozornenie</div><div class="fs-sub">Aj keď ste mimo kancelárie</div></div><div class="fs-dot" id="fd3"></div></div>
+          <div class="flow-line" id="fl3"></div>
+          <div class="flow-step" id="fs4"><div class="fs-icon">✅</div><div><div class="fs-title">Hotovo — bez vášho zásahu</div><div class="fs-sub">Celý proces trval pár sekúnd</div></div><div class="fs-dot" id="fd4"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="demo-restart-note">Ukážka sa automaticky opakuje v slučke</div>
+  </div>
+</section>
 <section id="referencie">
   <div class="container">
     <div class="section-label">Referencie</div>
@@ -704,7 +776,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 <script>
 // =========================================
 var WORKER_URL = 'https://axiona-proxy.mdominik01.workers.dev';
-var EMAIL   = 'mdominik01@gmail.com';
+var EMAIL   = 'VLOZ-EMAIL-SEM';
 var WEBHOOK = 'https://hook.eu1.make.com/5yr4gbeogvggl1jyiywhr1rhhjdbz9nf';
 // =========================================
 
@@ -925,6 +997,93 @@ function saveCustomCookies(){
   closeCookieModal(); hideBanner();
 }
 showBanner();
+
+// ANIMATED DEMO
+var animChat = document.getElementById('anim-chat');
+var animMsgs = [
+  {role:'bot', text:'Dobrý deň! Som realitný asistent. Hľadáte nehnuteľnosť na kúpu alebo prenájom?'},
+  {role:'user', text:'Hľadám 3-izbový byt v Košiciach do 150 000 €'},
+  {role:'bot', text:'Máme niekoľko skvelých možností. Chceli by ste dohodnúť obhliadku tento týždeň?'},
+  {role:'user', text:'Áno, mám záujem'},
+  {role:'bot', text:'Skvelé! Zanechajte prosím vaše kontaktné údaje:\nMeno: [vaše meno]\nEmail: [váš email]'},
+  {role:'user', text:'Jana Kováčová, jana.kovacova@gmail.com'},
+  {role:'bot', text:'Ďakujeme Jana! Ozveme sa vám do 24 hodín. Potvrdenie sme vám poslali na email.'},
+];
+var animIdx = 0;
+function animReset(){
+  if(animChat) animChat.innerHTML = '';
+  animIdx = 0;
+  for(var i=1;i<=4;i++){
+    var s=document.getElementById('fs'+i);
+    var d=document.getElementById('fd'+i);
+    var l=document.getElementById('fl'+i);
+    if(s){s.classList.remove('active','done');}
+    if(d){d.textContent='';}
+    if(l){l.classList.remove('done');}
+  }
+}
+function animFlow(){
+  var seq=[
+    {s:'fs1',d:'fd1',l:'fl1'},
+    {s:'fs2',d:'fd2',l:'fl2'},
+    {s:'fs3',d:'fd3',l:'fl3'},
+    {s:'fs4',d:'fd4',l:null},
+  ];
+  var i=0;
+  function nextStep(){
+    if(i>=seq.length){ setTimeout(function(){ animReset(); setTimeout(animStart,1500); },3500); return; }
+    var cur=seq[i];
+    var el=document.getElementById(cur.s);
+    var dot=document.getElementById(cur.d);
+    if(el){el.classList.add('active');}
+    setTimeout(function(){
+      if(el){el.classList.remove('active');el.classList.add('done');}
+      if(dot){dot.textContent='✓';}
+      if(cur.l){var ln=document.getElementById(cur.l);if(ln)ln.classList.add('done');}
+      i++;
+      setTimeout(nextStep,700);
+    },1100);
+  }
+  nextStep();
+}
+function animAddMsg(msg, cb){
+  if(!animChat) return;
+  if(msg.role==='bot'){
+    var typing=document.createElement('div');
+    typing.className='acm bot';
+    typing.innerHTML='<div class="acm-typing"><span></span><span></span><span></span></div>';
+    animChat.appendChild(typing);
+    animChat.scrollTop=animChat.scrollHeight;
+    setTimeout(function(){
+      animChat.removeChild(typing);
+      var div=document.createElement('div');
+      div.className='acm bot';
+      div.innerHTML='<div class="acm-bubble">'+msg.text.replace(/\n/g,'<br>')+'</div>';
+      animChat.appendChild(div);
+      animChat.scrollTop=animChat.scrollHeight;
+      if(cb) cb();
+    },900);
+  } else {
+    setTimeout(function(){
+      var div=document.createElement('div');
+      div.className='acm user';
+      div.innerHTML='<div class="acm-bubble">'+msg.text+'</div>';
+      animChat.appendChild(div);
+      animChat.scrollTop=animChat.scrollHeight;
+      if(cb) cb();
+    },400);
+  }
+}
+function animNext(){
+  if(animIdx>=animMsgs.length){ setTimeout(animFlow,1000); return; }
+  var msg=animMsgs[animIdx];
+  animIdx++;
+  var delay=msg.role==='bot'?1800:1200;
+  animAddMsg(msg,function(){ setTimeout(animNext,delay); });
+}
+function animStart(){ animReset(); setTimeout(animNext,800); }
+setTimeout(animStart,1500);
+
 </script>
 </body>
 </html>
