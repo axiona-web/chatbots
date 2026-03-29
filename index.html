@@ -602,7 +602,6 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
         <div class="price-tag">Vstupný</div>
         <div class="price-name">Lead Bot</div>
         <div class="price-pitch">Pre firmy, ktoré chcú zachytiť viac dopytov z webu aj mimo pracovného času.</div>
-        <div class="price-old" style="font-size:13px;color:var(--muted);text-decoration:line-through;margin-bottom:4px">od 290 € setup + od 29 € / mesiac</div>
         <div class="price-amount">od 390 € <span>jednorazovo</span></div>
         <div class="price-monthly">+ od 49 € / mesiac</div>
         <ul class="price-features">
@@ -619,7 +618,6 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
         <div class="price-tag">Odporúčané</div>
         <div class="price-name">Qualification Bot</div>
         <div class="price-pitch">Pre firmy, ktoré chcú kvalitnejšie leady, nie len kontakty. Ideálne pre reality a financie.</div>
-        <div class="price-old" style="font-size:13px;color:var(--muted);text-decoration:line-through;margin-bottom:4px">od 590 € setup + od 79 € / mesiac</div>
         <div class="price-amount">od 690 € <span>jednorazovo</span></div>
         <div class="price-monthly">+ od 99 € / mesiac</div>
         <ul class="price-features">
@@ -637,7 +635,6 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
         <div class="price-tag">Rezervácie</div>
         <div class="price-name">Booking Bot</div>
         <div class="price-pitch">Pre firmy, ktoré predávajú cez konzultácie, obhliadky alebo rezervácie termínov.</div>
-        <div class="price-old" style="font-size:13px;color:var(--muted);text-decoration:line-through;margin-bottom:4px">od 890 € setup + od 99 € / mesiac</div>
         <div class="price-amount">od 990 € <span>jednorazovo</span></div>
         <div class="price-monthly">+ od 119 € / mesiac</div>
         <ul class="price-features">
@@ -824,7 +821,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
   <button class="sticky-cta-btn" onclick="scroll2('kontakt')">Objednať bezplatné demo</button>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // =========================================
 var WORKER_URL = 'https://axiona-proxy.mdominik01.workers.dev';
 var EMAIL   = 'office@axiona-group.sk';
@@ -832,15 +829,18 @@ var WEBHOOK = 'https://hook.eu1.make.com/5yr4gbeogvggl1jyiywhr1rhhjdbz9nf';
 // =========================================
 
 // Set emails
-document.querySelectorAll('.contact-email, #contact-email-link').forEach(function(el){
-  el.href = 'mailto:' + EMAIL;
-  if(el.textContent === '—') el.textContent = EMAIL;
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.contact-email, #contact-email-link').forEach(function(el){
+    el.href = 'mailto:' + EMAIL;
+    if(el.textContent === '—') el.textContent = EMAIL;
+  });
+  ['btn-nav','btn-price1','btn-price2','btn-price3','btn-price4'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.href = 'mailto:' + EMAIL;
+  });
+  var cel = document.getElementById('contact-email-link');
+  if(cel) cel.textContent = EMAIL;
 });
-['btn-nav','btn-price1','btn-price2','btn-price3','btn-price4'].forEach(function(id){
-  var el = document.getElementById(id);
-  if(el) el.href = 'mailto:' + EMAIL;
-});
-document.getElementById('contact-email-link').textContent = EMAIL;
 
 function scroll2(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
 
@@ -973,73 +973,18 @@ function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
 }
 initChat();
-</script>
 
-<!-- COOKIE BANNER -->
-<div id="cookie-banner">
-  <div class="cookie-text">
-    Táto stránka používa cookies na zabezpečenie základnej funkčnosti a analýzu návštevnosti. 
-    Kliknutím na „Prijať všetky" súhlasíte s ich použitím. 
-    <a href="privacy.html" target="_blank">Viac informácií</a>
-  </div>
-  <div class="cookie-btns">
-    <button class="cookie-btn-settings" onclick="showCookieSettings()">Nastaviť</button>
-    <button class="cookie-btn-reject" onclick="rejectCookies()">Odmietnuť</button>
-    <button class="cookie-btn-accept" onclick="acceptAllCookies()">Prijať všetky</button>
-  </div>
-</div>
 
-<!-- COOKIE SETTINGS MODAL -->
-<div id="cookie-modal">
-  <div class="cookie-modal-box">
-    <div class="cm-title">Nastavenia cookies</div>
-    <div class="cm-sub">Spravujte, ktoré cookies povoľujete. Nevyhnutné cookies sú vždy aktívne a zabezpečujú základnú funkčnosť stránky.</div>
-    <div class="cookie-toggle-row">
-      <div class="ct-info">
-        <div class="ct-name">Nevyhnutné cookies</div>
-        <div class="ct-desc">Zabezpečujú základnú funkčnosť webu. Nie je možné ich vypnúť.</div>
-      </div>
-      <div class="toggle-wrap">
-        <input type="checkbox" class="toggle-input" id="t-necessary" checked disabled>
-        <label class="toggle-label" for="t-necessary"></label>
-      </div>
-    </div>
-    <div class="cookie-toggle-row">
-      <div class="ct-info">
-        <div class="ct-name">Analytické cookies</div>
-        <div class="ct-desc">Pomáhajú nám pochopiť, ako návštevníci používajú web (napr. počet návštev, čas na stránke).</div>
-      </div>
-      <div class="toggle-wrap">
-        <input type="checkbox" class="toggle-input" id="t-analytics">
-        <label class="toggle-label" for="t-analytics"></label>
-      </div>
-    </div>
-    <div class="cookie-toggle-row">
-      <div class="ct-info">
-        <div class="ct-name">Marketingové cookies</div>
-        <div class="ct-desc">Používajú sa na zobrazovanie relevantnej reklamy na základe vašich záujmov.</div>
-      </div>
-      <div class="toggle-wrap">
-        <input type="checkbox" class="toggle-input" id="t-marketing">
-        <label class="toggle-label" for="t-marketing"></label>
-      </div>
-    </div>
-    <div class="cm-modal-btns">
-      <button class="cm-close-btn" onclick="closeCookieModal()">Zrušiť</button>
-      <button class="cm-save-btn" onclick="saveCustomCookies()">Uložiť nastavenia</button>
-    </div>
-  </div>
-</div>
 
-<script>
+
 function getCookie(name){var v=document.cookie.match('(^|;) ?'+name+'=([^;]*)(;|$)');return v?v[2]:null;}
 function setCookie(name,val,days){var d=new Date();d.setTime(d.getTime()+days*24*60*60*1000);document.cookie=name+'='+val+';expires='+d.toUTCString()+';path=/';}
-function showBanner(){if(!getCookie('cookie_consent')){setTimeout(function(){document.getElementById('cookie-banner').classList.add('visible');},800);}}
-function hideBanner(){document.getElementById('cookie-banner').classList.remove('visible');}
+function showBanner(){if(!getCookie('cookie_consent')){setTimeout(function(){var b=document.getElementById('cookie-banner');if(b)b.classList.add('visible');},800);}}
+function hideBanner(){var b=document.getElementById('cookie-banner');if(b)b.classList.remove('visible');}
 function acceptAllCookies(){setCookie('cookie_consent','all',365);hideBanner();}
 function rejectCookies(){setCookie('cookie_consent','necessary',365);hideBanner();}
-function showCookieSettings(){document.getElementById('cookie-modal').classList.add('open');}
-function closeCookieModal(){document.getElementById('cookie-modal').classList.remove('open');}
+function showCookieSettings(){var m=document.getElementById('cookie-modal');if(m)m.classList.add('open');}
+function closeCookieModal(){var m=document.getElementById('cookie-modal');if(m)m.classList.remove('open');}
 function saveCustomCookies(){
   var analytics=document.getElementById('t-analytics').checked;
   var marketing=document.getElementById('t-marketing').checked;
@@ -1127,4 +1072,13 @@ function animAddMsg(msg, cb){
 }
 function animNext(){
   if(animIdx>=animMsgs.length){ setTimeout(animFlow,1000); return; }
-  var msg=animMsgs
+  var msg=animMsgs[animIdx];
+  animIdx++;
+  var delay=msg.role==='bot'?1800:1200;
+  animAddMsg(msg,function(){ setTimeout(animNext,delay); });
+}
+function animStart(){ animReset(); setTimeout(animNext,800); }
+setTimeout(animStart,1500);
+</script>
+</body>
+</html>
