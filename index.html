@@ -814,7 +814,7 @@ async function chatSend(){
   messages.push({role:'user', content:text});
   renderMessages(true);
   try{
-    var res = await fetch(WORKER_URL,{
+    var res = await fetch(WORKER_URL + '/chat',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({

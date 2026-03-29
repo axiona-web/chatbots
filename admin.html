@@ -167,10 +167,8 @@ tr:hover td{background:var(--bg)}
 <script>
 // ═══════════════════════════════════════════
 var CONFIG = {
-  password: 'axiona2026',
-  sheetId:  '1rfCAFO79RNbIO6hhFC2rcgLVexoW5tfWgytaut4SecU',
-  apiKey:   'AIzaSyDWAesFdZkgVvzV8RNTgtdxb6IgrH9HxY8',
-  sheetName: 'Hárok1',
+  password:  'axiona2026',
+  workerUrl: 'https://axiona-proxy.mdominik01.workers.dev',
   clientName: 'Axiona Group'
 };
 // ═══════════════════════════════════════════
@@ -202,11 +200,8 @@ async function loadLeads(){
   btn.classList.add('loading');
   btn.disabled = true;
 
-  var url = 'https://sheets.googleapis.com/v4/spreadsheets/' + CONFIG.sheetId +
-    '/values/' + encodeURIComponent(CONFIG.sheetName) + '?key=' + CONFIG.apiKey;
-
   try {
-    var res = await fetch(url);
+    var res = await fetch(CONFIG.workerUrl + '/sheets');
     var data = await res.json();
     var rows = data.values || [];
     // Skip header row
