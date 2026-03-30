@@ -35,7 +35,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);m
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(15,15,19,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Playfair Display',serif;font-size:19px;color:var(--accent)}
+.nav-logo{display:flex;align-items:center}
 .nav-links{display:flex;gap:28px}
 .nav-links a{color:var(--muted2);font-size:13.5px;text-decoration:none;cursor:pointer;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
@@ -337,7 +337,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Axiona Group</div>
+  <a href="/"><img src="https://axiona-group.sk/logo.png" alt="Axiona Group" height="36" style="display:block;max-height:36px;width:auto"/></a>
   <div class="nav-links">
     <a onclick="scroll2('pre-koho')">Pre koho</a>
     <a onclick="scroll2('demo')">Demo</a>
