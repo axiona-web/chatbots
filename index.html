@@ -18,7 +18,6 @@
 <meta name="robots" content="index, follow">
 <meta name="author" content="Axiona Group s. r. o.">
 <meta name="keywords" content="AI chatbot, chatbot pre firmy, chatbot na web, zber leadov, AI asistent, automatizácia, Slovensko">
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -340,7 +339,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 
 <!-- NAV -->
 <nav>
-  <a href="/"><img src="https://axiona-group.sk/logo-web.png" alt="Axiona Group" height="72" style="display:block;max-height:72px;width:auto"/></a>
+  <a href="/"><img src="https://axiona-group.sk/logo.png" alt="Axiona Group" height="72" style="display:block;max-height:72px;width:auto"/></a>
   <div class="nav-links">
     <a onclick="scroll2('pre-koho')">Pre koho</a>
     <a onclick="scroll2('demo')">Demo</a>
@@ -896,7 +895,7 @@ function submitForm(){
   var btn = document.querySelector('.form-submit');
   btn.disabled = true;
   btn.textContent = 'Odosielam...';
-  var params = {
+  var payload = {
     meno: name,
     firma: document.getElementById('f-company').value.trim(),
     email: email,
@@ -905,19 +904,22 @@ function submitForm(){
     sprava: document.getElementById('f-msg').value.trim(),
     cas: new Date().toLocaleString('sk-SK')
   };
-  emailjs.init('7bmRu00i0s3xzrnrr');
-  emailjs.send('service_j9nbdsn', 'template_tcrn9k8', params)
-    .then(function(){
-      document.getElementById('contact-form').style.display = 'none';
-      document.getElementById('form-success').style.display = 'block';
-      fetch(WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(params)}).catch(function(){});
-    })
-    .catch(function(err){
-      btn.disabled = false;
-      btn.textContent = 'Odoslať žiadosť o demo';
-      alert('Nastala chyba pri odosielaní. Skúste znova alebo napíšte priamo na office@axiona-group.sk');
-      console.error('EmailJS error:', err);
-    });
+  fetch('https://axiona-group.sk/send.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(payload)
+  })
+  .then(function(r){ return r.json(); })
+  .then(function(){
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    fetch(WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)}).catch(function(){});
+  })
+  .catch(function(){
+    btn.disabled = false;
+    btn.textContent = 'Odoslať žiadosť o demo';
+    alert('Nastala chyba. Skúste znova alebo napíšte na office@axiona-group.sk');
+  });
 }
 
 // CHATBOTS
