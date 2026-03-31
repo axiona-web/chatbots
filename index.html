@@ -18,6 +18,7 @@
 <meta name="robots" content="index, follow">
 <meta name="author" content="Axiona Group s. r. o.">
 <meta name="keywords" content="AI chatbot, chatbot pre firmy, chatbot na web, zber leadov, AI asistent, automatizácia, Slovensko">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -328,6 +329,8 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 .flow-line.done{background:var(--green)}
 .demo-restart-note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:20px;font-style:italic}
 @media(max-width:768px){.demo-flow-outer{grid-template-columns:1fr}}
+@media(max-width:600px){.addon-grid{grid-template-columns:repeat(3,1fr) !important}}
+@media(max-width:400px){.addon-grid{grid-template-columns:repeat(2,1fr) !important}}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TCK43PYDBN"></script>
@@ -337,7 +340,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 
 <!-- NAV -->
 <nav>
-  <a href="/"><img src="https://axiona-group.sk/logo.png" alt="Axiona Group" height="36" style="display:block;max-height:36px;width:auto"/></a>
+  <a href="/"><img src="https://axiona-group.sk/logo.png" alt="Axiona Group" height="72" style="display:block;max-height:72px;width:auto"/></a>
   <div class="nav-links">
     <a onclick="scroll2('pre-koho')">Pre koho</a>
     <a onclick="scroll2('demo')">Demo</a>
@@ -681,7 +684,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
       </div>
       <div style="width:100%;padding-top:20px;border-top:1px solid var(--border2)">
         <div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:16px">Addony</div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px" class="addon-grid">
           <div style="padding:14px 16px;border:1px solid var(--border2);border-radius:8px;background:rgba(240,236,228,.02)">
             <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:4px">CRM integrácia</div>
             <div style="font-size:11px;color:var(--muted)">150 – 500 €</div>
@@ -890,19 +893,31 @@ function submitForm(){
   var name = document.getElementById('f-name').value.trim();
   var email = document.getElementById('f-email').value.trim();
   if(!name || !email){ alert('Vyplňte prosím meno a email.'); return; }
-  var payload = {
+  var btn = document.querySelector('.form-submit');
+  btn.disabled = true;
+  btn.textContent = 'Odosielam...';
+  var params = {
     meno: name,
     firma: document.getElementById('f-company').value.trim(),
     email: email,
     telefon: document.getElementById('f-phone').value.trim(),
     web: document.getElementById('f-web').value.trim(),
     sprava: document.getElementById('f-msg').value.trim(),
-    zdroj: 'kontaktny-formular',
     cas: new Date().toLocaleString('sk-SK')
   };
-  fetch(WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)}).catch(function(){});
-  document.getElementById('contact-form').style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
+  emailjs.init('7bmRu00i0s3xzrnrr');
+  emailjs.send('service_j9nbdsn', 'template_tcrn9k8', params)
+    .then(function(){
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+      fetch(WEBHOOK, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(params)}).catch(function(){});
+    })
+    .catch(function(err){
+      btn.disabled = false;
+      btn.textContent = 'Odoslať žiadosť o demo';
+      alert('Nastala chyba pri odosielaní. Skúste znova alebo napíšte priamo na office@axiona-group.sk');
+      console.error('EmailJS error:', err);
+    });
 }
 
 // CHATBOTS
