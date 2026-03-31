@@ -904,7 +904,7 @@ function submitForm(){
     sprava: document.getElementById('f-msg').value.trim(),
     cas: new Date().toLocaleString('sk-SK')
   };
-  fetch('https://axiona-group.sk/send.php', {
+  fetch('https://api.axiona-group.sk/send.php', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(payload)
