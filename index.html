@@ -567,39 +567,35 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 </section>
 <section id="referencie">
   <div class="container">
-    <div class="section-label">Referencie</div>
-    <div class="section-title">Výsledky u klientov</div>
-    <p class="section-sub">Ilustračné príklady výsledkov, ktoré dosahujú firmy po nasadení chatbota.</p>
+    <div class="section-label">Výsledky</div>
+    <div class="section-title">Typické výsledky po nasadení</div>
+    <p class="section-sub" style="font-size:13px;color:var(--muted);margin-top:8px">Uvádzame typické scenáre a výsledky na základe skúseností s nasadením podobných riešení. Konkrétne čísla sa líšia podľa odvetvia, návštevnosti webu a kvality podkladov.</p>
     <div class="ref-grid">
       <div class="ref-card">
         <div class="ref-segment">Realitná kancelária</div>
-        <div class="ref-headline">"Viac leadov mimo pracovných hodín"</div>
-        <div class="ref-text">Po nasadení chatbota nám začali chodiť dopyty aj večer a cez víkend. Za prvé tri týždne zachytil 14 kontaktov, ktoré by inak pravdepodobne odišli bez odpovede.</div>
-        <div class="ref-author">Martin N.</div>
-        <div class="ref-company">Realitná kancelária, Bratislava</div>
+        <div class="ref-headline">Dopyty aj mimo pracovnej doby</div>
+        <div class="ref-text">Chatbot zachytáva záujemcov aj večer a cez víkend. Kontakty chodili priamo na email makléra bez nutnosti byť online.</div>
       </div>
       <div class="ref-card">
         <div class="ref-segment">Finančné poradenstvo</div>
-        <div class="ref-headline">"Kvalifikovanejšie leady pre obchod"</div>
-        <div class="ref-text">Klienti si zvykli odpovedať na základné otázky pred hovorom. Mám oveľa lepšiu predstavu o ich situácii ešte pred prvým kontaktom. Šetrí mi to hodiny každý mesiac.</div>
-        <div class="ref-author">Peter K.</div>
-        <div class="ref-company">Finančný poradca, Žilina</div>
+        <div class="ref-headline">Kvalifikovanejší prvý kontakt</div>
+        <div class="ref-text">Bot zistí základné informácie o záujemcovi pred prvým hovorom — typ produktu, horizont, aktuálne zmluvy. Poradca ide na hovor pripravený.</div>
       </div>
     </div>
     <div class="case-study">
-      <div class="cs-label">Mini case study — E-shop</div>
+      <div class="cs-label">Ilustračný scenár — E-shop</div>
       <div class="cs-grid">
         <div>
-          <div class="cs-block-title">Situácia pred nasadením</div>
-          <div class="cs-block-text">E-shop strácal záujemcov mimo pracovného času. Opakujúce sa otázky o dostupnosti a doprave zahlcovali podporu.</div>
+          <div class="cs-block-title">Typická situácia pred nasadením</div>
+          <div class="cs-block-text">E-shop stráca záujemcov mimo pracovného času. Opakujúce sa otázky o dostupnosti a doprave zahlcujú podporu.</div>
         </div>
         <div>
-          <div class="cs-block-title">Čo bolo implementované</div>
+          <div class="cs-block-title">Čo sa implementuje</div>
           <div class="cs-block-text">Lead Capture Bot s FAQ odpovedami, zber kontaktov a automatické emailové notifikácie pre zákazníka aj tím.</div>
         </div>
         <div>
-          <div class="cs-block-title">Výsledok po 30 dňoch</div>
-          <div class="cs-result">+38%</div>
+          <div class="cs-block-title">Typický prínos po nasadení</div>
+          <div class="cs-result">+30–40%</div>
           <div class="cs-result-label">viac zachytených dopytov mimo pracovného času</div>
         </div>
       </div>
@@ -615,11 +611,13 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
     <div class="pricing-note-top">Transparentné ceny bez skrytých poplatkov. Presná cena závisí od rozsahu a počtu scenárov.</div>
     <div class="pricing-grid">
       <div class="price-card">
-        <div class="price-tag">Základ</div>
+        <div class="price-tag" style="background:rgba(45,158,107,.15);color:#2d9e6b;border-color:rgba(45,158,107,.3)">⚡ Pilotná ponuka</div>
         <div class="price-name">Lead Bot</div>
         <div class="price-pitch">Zachytí záujemcov z webu aj keď ste offline. Odpovedá, zbiera kontakt, upozorní vás.</div>
-        <div class="price-amount">od 390 € <span>jednorazovo</span></div>
-        <div class="price-monthly">+ od 49 € / mesiac</div>
+        <div class="price-amount" style="text-decoration:line-through;opacity:.45;font-size:18px;margin-bottom:4px">od 390 € jednorazovo</div>
+        <div class="price-amount" style="margin-bottom:4px">od 290 € <span>jednorazovo</span></div>
+        <div class="price-monthly" style="color:#2d9e6b;font-weight:500">+ prvý mesiac zadarmo</div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:12px;margin-top:4px">Limitovaná ponuka pre prvých klientov</div>
         <ul class="price-features">
           <li>Odpovede na časté otázky 24/7</li>
           <li>Zber mena a emailu záujemcu</li>
@@ -761,7 +759,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
         <div class="footer-links">
           <a href="privacy.html">Ochrana osobných údajov</a>
           <a href="terms.html">Obchodné podmienky</a>
-          <a href="#" onclick="showCookieSettings()">Cookies</a>
+          <a href="cookies.html">Cookies</a>
         </div>
       </div>
     </div>
@@ -809,7 +807,7 @@ var faqs = [
   {q:'Odpovedá chatbot len z našich dát?', a:'Áno. Chatbot nastavujeme podľa podkladov, ktoré nám dodáte – napríklad váš web, služby, FAQ, cenník alebo interné odpovede. Nevymýšľa si odpovede.'},
   {q:'Vie chatbot zbierať kontakty?', a:'Áno. Počas konverzácie môže vyžiadať meno, email, telefón alebo správu a odoslať ich na email alebo do vybraného nástroja (Sheets, CRM a pod.).'},
   {q:'Dá sa napojiť na CRM?', a:'Áno, pri rozšírenom balíku vieme riešiť základné napojenia na CRM, tabuľky alebo notifikačné nástroje ako Telegram alebo Slack.'},
-  {q:'Ako dlho trvá nasadenie?', a:'Lead Bot nasadíme do 48 hodín od prijatia podkladov. Komplexnejšie riešenia ako Qualification Bot, Booking Bot alebo AI Front Desk trvajú dlhšie — presný čas závisí od rozsahu projektu a počtu integrácií.'},
+  {q:'Ako dlho trvá nasadenie?', a:'Pri jednoduchom projekte vieme pripraviť demo rýchlo. Finálny čas závisí od kvality dodaných podkladov a rozsahu požadovanej logiky.'},
   {q:'Čo ak zmeníme služby alebo cenník?', a:'Obsah chatbota sa dá upravovať. Rozsah úprav závisí od zvoleného balíka a typu zmeny. Jednoduché zmeny sú zahrnuté v mesačnom paušále.'},
   {q:'Je to vhodné aj pre malé firmy?', a:'Áno, najmä ak chcete zachytiť dopyty mimo pracovných hodín a automatizovať opakujúce sa otázky bez toho, aby ste museli meniť web alebo najímať ďalšieho človeka.'},
   {q:'Je riešenie v súlade s GDPR?', a:'Spracovanie údajov treba nastaviť správne podľa reálneho spôsobu zberu leadov, použitých nástrojov a právnych dokumentov na webe. Pri nasadení vám poskytneme odporúčania.'},
