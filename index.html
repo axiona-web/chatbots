@@ -1353,4 +1353,14 @@ setTimeout(animStart,1500);
 
 <div id="cookie-banner">
   <div class="cookie-text">
-    Táto stránka používa cookies na zabezpečenie základnej funkčnosti a analýzu náv
+    Táto stránka používa cookies na zabezpečenie základnej funkčnosti a analýzu návštevnosti.
+    <a href="cookies.html" style="color:var(--accent);text-decoration:none"> Viac informácií</a>
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-btn-reject" onclick="rejectCookies()">Len nevyhnutné</button>
+    <button class="cookie-btn-settings" onclick="window.location.href='cookies.html'">Nastavenia</button>
+    <button class="cookie-btn-accept" onclick="acceptAllCookies()">Prijať všetky</button>
+  </div>
+</div>
+</body>
+</html>
