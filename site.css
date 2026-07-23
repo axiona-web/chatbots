@@ -215,7 +215,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  .pricing-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr !important}
   .steps-grid{grid-template-columns:1fr 1fr;gap:24px}
   .steps-grid::before{display:none}
   .cs-grid{grid-template-columns:1fr}
