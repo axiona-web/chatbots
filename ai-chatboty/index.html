@@ -1054,7 +1054,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
           <li>Prehľad leadov v tabuľke</li>
           <li>Nasadenie do 48 hodín</li>
         </ul>
-        <a id="btn-price1" class="btn-ghost" style="text-align:center;margin-top:auto">Mám záujem</a>
+        <a id="btn-price1" class="btn-ghost" onclick="scroll2('kontakt')" style="text-align:center;margin-top:auto;cursor:pointer">Mám záujem</a>
       </div>
       <div class="price-card featured">
         <div class="price-tag">Odporúčané</div>
@@ -1069,7 +1069,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
           <li>Štruktúrovaný sumár pre obchodníka</li>
           <li>CRM alebo Sheets integrácia</li>
         </ul>
-        <a id="btn-price2" class="btn-primary" style="text-align:center;margin-top:auto">Mám záujem</a>
+        <a id="btn-price2" class="btn-primary" onclick="scroll2('kontakt')" style="text-align:center;margin-top:auto;cursor:pointer">Mám záujem</a>
       </div>
       <div class="price-card">
         <div class="price-tag">Rezervácie</div>
@@ -1084,7 +1084,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
           <li>Potvrdenia a remindery emailom</li>
           <li>Zníženie počtu no-show</li>
         </ul>
-        <a id="btn-price3" class="btn-ghost" style="text-align:center;margin-top:auto">Mám záujem</a>
+        <a id="btn-price3" class="btn-ghost" onclick="scroll2('kontakt')" style="text-align:center;margin-top:auto;cursor:pointer">Mám záujem</a>
       </div>
     </div>
     <div class="price-custom" style="flex-direction:column;align-items:flex-start;gap:20px">
@@ -1093,7 +1093,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
           <div class="pc-name">Riešenie na mieru — AI Front Desk</div>
           <div class="pc-desc" style="max-width:600px">Pre firmy s obchodným tímom, CRM systémom a väčším objemom dopytov. Kombinuje chatbot, kvalifikáciu, rezervácie, CRM integráciu a pravidelný reporting do jedného riešenia.</div>
         </div>
-        <a id="btn-price4" class="btn-ghost" style="white-space:nowrap;flex-shrink:0">Dohodnúť hovor</a>
+        <a id="btn-price4" class="btn-ghost" onclick="scroll2('kontakt')" style="white-space:nowrap;flex-shrink:0;cursor:pointer">Mám záujem</a>
       </div>
       <div style="font-size:13px;color:var(--muted);font-style:italic">Cena na mieru — setup od 1 490 € + od 149 € / mesiac</div>
     </div>
@@ -1109,7 +1109,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
   <div class="container" style="text-align:center">
     <div style="font-size:22px;font-weight:500;color:var(--text);margin-bottom:10px">Pošlite web — pripravíme vám návrh do 24 hodín</div>
     <div style="font-size:14px;color:var(--muted2);margin-bottom:28px">Bez záväzku. Stačí základný kontakt a link na web.</div>
-    <button class="btn-primary" onclick="scroll2('kontakt')" style="font-size:15px;padding:14px 32px">Poslať web na posúdenie</button>
+    <button class="btn-primary" onclick="scroll2('kontakt')" style="font-size:15px;padding:14px 32px">Nezáväzná konzultácia</button>
   </div>
 </section>
 
@@ -1166,7 +1166,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
             <textarea class="form-textarea" id="f-msg" placeholder="Stručne opíšte váš biznis a čo by mal chatbot riešiť..."></textarea>
           </div>
           <div class="form-consent">Odoslaním formulára súhlasíte so spracovaním osobných údajov za účelom kontaktovania. <a href="/privacy.html" target="_blank">Ochrana osobných údajov.</a></div>
-          <button class="form-submit" onclick="submitForm()">Poslať web na posúdenie</button>
+          <button class="form-submit" onclick="submitForm()">Poslať dopyt</button>
         </div>
         <div class="form-success" id="form-success">Ďakujeme! Ozveme sa vám do 24 hodín.</div>
       </div>
@@ -1180,10 +1180,10 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
     <div class="footer-top">
       <div class="footer-brand">
         <img src="https://axiona-group.sk/logo-web.png" alt="Axiona Group s. r. o. — AI chatboty a automatizácie" height="48" style="display:block;margin-bottom:10px;width:auto"/>
-        <div class="fb-desc">AI chatboty a automatizácie pre malé a stredné firmy.<br>Zachytíme viac leadov, kvalifikujeme ich a doručíme priamo vám.</div>
+        <div class="fb-desc">Softvérové riešenia pre malé a stredné firmy.<br>AI chatboty, weby, automatizácie a dátové reporty.</div>
       </div>
       <div>
-        <div class="footer-col-title">Navigácia</div>
+        <div class="footer-col-title">Služby</div>
         <div class="footer-links">
           <a href="/ai-chatboty/">AI chatboty</a>
           <a href="/weby/">Tvorba webov</a>
@@ -1229,10 +1229,6 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.contact-email, #contact-email-link').forEach(function(el){
     el.href = 'mailto:' + EMAIL;
     if(el.textContent === '—') el.textContent = EMAIL;
-  });
-  ['btn-nav','btn-price1','btn-price2','btn-price3','btn-price4'].forEach(function(id){
-    var el = document.getElementById(id);
-    if(el) el.href = 'mailto:' + EMAIL;
   });
   var cel = document.getElementById('contact-email-link');
   if(cel) cel.textContent = EMAIL;
@@ -1303,7 +1299,7 @@ function submitForm(){
   })
   .catch(function(){
     btn.disabled = false;
-    btn.textContent = 'Poslať web na posúdenie';
+    btn.textContent = 'Poslať dopyt';
     alert('Nastala chyba. Skúste znova alebo napíšte na office@axiona-group.sk');
   });
 }
