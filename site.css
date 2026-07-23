@@ -211,6 +211,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 /* HAMBURGER */
 .nav-toggle{display:none;align-items:center;justify-content:center;background:none;border:none;color:var(--text);font-size:22px;line-height:1;cursor:pointer;padding:8px 10px;border-radius:6px}
 .nav-toggle:hover{background:rgba(240,236,228,.06)}
+.nav-cta-mobile{display:none}
 
 /* RESPONSIVE */
 @media(max-width:900px){
@@ -236,7 +237,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
   .nav-links.open{max-height:340px;opacity:1;pointer-events:auto}
   .nav-links a{padding:14px 2px;font-size:15.5px;border-bottom:1px solid var(--border2)}
   .nav-links a:last-child{border-bottom:none}
-  .nav-links .nav-cta-mobile{margin-top:10px;background:var(--accent);color:#1a1108;text-align:center;border-radius:7px;padding:13px;font-weight:500;border-bottom:none}
+  .nav-cta-mobile{display:block;margin-top:10px;background:var(--accent);color:#1a1108;text-align:center;border-radius:7px;padding:13px;font-weight:500;border-bottom:none}
   section{padding:56px 20px}
   .problem-section,.need-section,.case-studies-section,.proof-section,.comparison-section,.animated-demo-section{padding:56px 0}
   .demo-grid,.for-who-grid,.ref-grid,.contact-grid{grid-template-columns:1fr}
