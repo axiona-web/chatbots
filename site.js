@@ -9,6 +9,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function scroll2(id){ var el = document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
 
+// MOBILE NAV
+function toggleNav(){ var n = document.querySelector('.nav-links'); if(n) n.classList.toggle('open'); }
+function closeNav(){ var n = document.querySelector('.nav-links'); if(n) n.classList.remove('open'); }
+document.addEventListener('DOMContentLoaded', function(){
+  var links = document.querySelectorAll('.nav-links a');
+  links.forEach(function(a){ a.addEventListener('click', closeNav); });
+});
+
 // FAQ (page defines window.FAQS before including this file)
 (function(){
   var faqList = document.getElementById('faq-list');

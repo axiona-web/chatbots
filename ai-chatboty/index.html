@@ -165,6 +165,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:fl
 .nav-links a:hover{color:var(--text)}
 .nav-cta{background:var(--accent);color:#1a1108;font-size:13px;font-weight:500;padding:9px 20px;border-radius:6px;text-decoration:none;cursor:pointer;transition:opacity .2s;white-space:nowrap}
 .nav-cta:hover{opacity:.88}
+.nav-toggle{display:none;align-items:center;justify-content:center;background:none;border:none;color:var(--text);font-size:22px;line-height:1;cursor:pointer;padding:8px 10px;border-radius:6px}
+.nav-toggle:hover{background:rgba(240,236,228,.06)}
 
 /* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 24px 80px;position:relative;overflow:hidden}
@@ -366,15 +368,30 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
   .ni-list{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-  nav{padding:14px 20px}
-  .nav-links{display:none}
+  nav{padding:12px 18px}
+  .nav-toggle{display:flex}
+  nav > .nav-cta{display:none}
+  .nav-links{
+    display:flex;flex-direction:column;gap:0;
+    position:absolute;top:100%;left:0;right:0;
+    background:var(--dark2);border-bottom:1px solid var(--border);
+    padding:6px 18px 12px;
+    max-height:0;overflow:hidden;opacity:0;pointer-events:none;
+    transition:max-height .3s ease,opacity .25s ease;
+  }
+  .nav-links.open{max-height:340px;opacity:1;pointer-events:auto}
+  .nav-links a{padding:14px 2px;font-size:15.5px;border-bottom:1px solid var(--border2)}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-cta-mobile{margin-top:10px;background:var(--accent);color:#1a1108;text-align:center;border-radius:7px;padding:13px;font-weight:500;border-bottom:none !important}
+  section{padding:56px 20px}
+  .problem-section,.need-section,.case-studies-section,.proof-section,.comparison-section,.animated-demo-section{padding:56px 0}
   .demo-grid,.for-who-grid,.ref-grid,.contact-grid{grid-template-columns:1fr}
   .deliverables-grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
   footer{padding:32px 20px}
   .footer-bottom{flex-direction:column;text-align:center}
   .sticky-cta{display:block}
-  body{padding-bottom:70px}
+  body{padding-bottom:76px}
 }
 @media(max-width:480px){
   .deliverables-grid{grid-template-columns:1fr}
@@ -537,8 +554,10 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
     <a href="/weby/">Weby</a>
     <a href="/automatizacie/">Automatizácie</a>
     <a href="/data-reporty/">Dáta &amp; reporty</a>
+    <a class="nav-cta-mobile" onclick="scroll2('kontakt')">Nezáväzná konzultácia</a>
   </div>
   <a id="btn-nav" class="nav-cta" onclick="scroll2('kontakt')">Získať návrh riešenia</a>
+  <button class="nav-toggle" onclick="toggleNav()" aria-label="Otvoriť menu">☰</button>
 </nav>
 
 <!-- HERO -->
@@ -1221,6 +1240,9 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 function scroll2(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+function toggleNav(){ var n=document.querySelector('.nav-links'); if(n) n.classList.toggle('open'); }
+function closeNav(){ var n=document.querySelector('.nav-links'); if(n) n.classList.remove('open'); }
+document.addEventListener('DOMContentLoaded',function(){ document.querySelectorAll('.nav-links a').forEach(function(a){ a.addEventListener('click', closeNav); }); });
 
 // FAQ
 var faqs = [

@@ -208,6 +208,10 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
+/* HAMBURGER */
+.nav-toggle{display:none;align-items:center;justify-content:center;background:none;border:none;color:var(--text);font-size:22px;line-height:1;cursor:pointer;padding:8px 10px;border-radius:6px}
+.nav-toggle:hover{background:rgba(240,236,228,.06)}
+
 /* RESPONSIVE */
 @media(max-width:900px){
   .pricing-grid{grid-template-columns:1fr}
@@ -218,19 +222,39 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
   .ni-list{grid-template-columns:1fr}
 }
 @media(max-width:768px){
-  nav{padding:14px 20px}
-  .nav-links{display:none}
+  nav{padding:12px 18px}
+  .nav-toggle{display:flex}
+  nav .nav-cta{display:none}
+  .nav-links{
+    display:flex;flex-direction:column;gap:0;
+    position:absolute;top:100%;left:0;right:0;
+    background:var(--dark2);border-bottom:1px solid var(--border);
+    padding:6px 18px 12px;
+    max-height:0;overflow:hidden;opacity:0;pointer-events:none;
+    transition:max-height .3s ease,opacity .25s ease;
+  }
+  .nav-links.open{max-height:340px;opacity:1;pointer-events:auto}
+  .nav-links a{padding:14px 2px;font-size:15.5px;border-bottom:1px solid var(--border2)}
+  .nav-links a:last-child{border-bottom:none}
+  .nav-links .nav-cta-mobile{margin-top:10px;background:var(--accent);color:#1a1108;text-align:center;border-radius:7px;padding:13px;font-weight:500;border-bottom:none}
+  section{padding:56px 20px}
+  .problem-section,.need-section,.case-studies-section,.proof-section,.comparison-section,.animated-demo-section{padding:56px 0}
   .demo-grid,.for-who-grid,.ref-grid,.contact-grid{grid-template-columns:1fr}
   .deliverables-grid{grid-template-columns:1fr 1fr}
   .form-row{grid-template-columns:1fr}
+  .btn-primary,.btn-ghost{width:100%;text-align:center;padding:15px 28px}
+  .hero-actions{flex-direction:column;gap:10px}
   footer{padding:32px 20px}
   .footer-bottom{flex-direction:column;text-align:center}
   .sticky-cta{display:block}
-  body{padding-bottom:70px}
+  body{padding-bottom:76px}
 }
 @media(max-width:480px){
+  section{padding:48px 18px}
   .deliverables-grid{grid-template-columns:1fr}
   .hero-micro{flex-direction:column;align-items:center;gap:12px}
+  .price-card{padding:26px 22px}
+  .contact-left .cl-title{font-size:23px}
 }
 
 /* COOKIE BANNER */
