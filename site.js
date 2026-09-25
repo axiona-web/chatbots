@@ -36,11 +36,36 @@ function toggleFaq(el){
   if(!open){ el.classList.add('open'); a.classList.add('open'); }
 }
 
+
+// VALIDÁCIA KONTAKTU — každý dopyt musí mať meno a priezvisko, firmu, e-mail a telefón
+function validateLead(d){
+  var err = [];
+  var parts = (d.meno||'').trim().split(/\s+/).filter(function(p){ return p.replace(/[^A-Za-zÀ-ſ]/g,'').length >= 2; });
+  if(parts.length < 2) err.push('meno a priezvisko');
+  if((d.firma||'').trim().length < 2) err.push('názov firmy');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((d.email||'').trim())) err.push('platný e-mail');
+  var ph = (d.telefon||'').trim();
+  if(!/^[+0-9 ()\/-]+$/.test(ph) || ph.replace(/\D/g,'').length < 9) err.push('platné telefónne číslo');
+  return err;
+}
+function markInvalid(ids, bad){
+  ids.forEach(function(id){ var el = document.getElementById(id); if(el) el.style.borderColor = ''; });
+  bad.forEach(function(id){ var el = document.getElementById(id); if(el) el.style.borderColor = '#d9534f'; });
+}
+
 // FORM
 function submitForm(){
-  var name = document.getElementById('f-name').value.trim();
-  var email = document.getElementById('f-email').value.trim();
-  if(!name || !email){ alert('Vyplňte prosím meno a email.'); return; }
+  var d = {
+    meno: document.getElementById('f-name').value.trim(),
+    firma: document.getElementById('f-company').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    telefon: document.getElementById('f-phone').value.trim()
+  };
+  var err = validateLead(d);
+  var map = {'meno a priezvisko':'f-name','názov firmy':'f-company','platný e-mail':'f-email','platné telefónne číslo':'f-phone'};
+  markInvalid(['f-name','f-company','f-email','f-phone'], err.map(function(e){ return map[e]; }));
+  if(err.length){ alert('Doplňte prosím: ' + err.join(', ') + '.'); return; }
+  var name = d.meno, email = d.email;
   var btn = document.querySelector('.form-submit');
   var btnText = btn.textContent;
   btn.disabled = true;

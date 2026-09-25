@@ -1140,11 +1140,11 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
         <div class="contact-form" id="contact-form">
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Meno *</label>
+              <label class="form-label">Meno a priezvisko *</label>
               <input class="form-input" id="f-name" placeholder="Ján Novák" type="text">
             </div>
             <div class="form-group">
-              <label class="form-label">Firma</label>
+              <label class="form-label">Firma *</label>
               <input class="form-input" id="f-company" placeholder="Vaša firma" type="text">
             </div>
           </div>
@@ -1154,7 +1154,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
               <input class="form-input" id="f-email" placeholder="jan@firma.sk" type="email">
             </div>
             <div class="form-group">
-              <label class="form-label">Telefón</label>
+              <label class="form-label">Telefón *</label>
               <input class="form-input" id="f-phone" placeholder="+421 900 000 000" type="tel">
             </div>
           </div>
@@ -1271,11 +1271,36 @@ function toggleFaq(el){
   if(!open){ el.classList.add('open'); a.classList.add('open'); }
 }
 
+
+// VALIDÁCIA KONTAKTU — každý dopyt musí mať meno a priezvisko, firmu, e-mail a telefón
+function validateLead(d){
+  var err = [];
+  var parts = (d.meno||'').trim().split(/\s+/).filter(function(p){ return p.replace(/[^A-Za-zÀ-ſ]/g,'').length >= 2; });
+  if(parts.length < 2) err.push('meno a priezvisko');
+  if((d.firma||'').trim().length < 2) err.push('názov firmy');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((d.email||'').trim())) err.push('platný e-mail');
+  var ph = (d.telefon||'').trim();
+  if(!/^[+0-9 ()\/-]+$/.test(ph) || ph.replace(/\D/g,'').length < 9) err.push('platné telefónne číslo');
+  return err;
+}
+function markInvalid(ids, bad){
+  ids.forEach(function(id){ var el = document.getElementById(id); if(el) el.style.borderColor = ''; });
+  bad.forEach(function(id){ var el = document.getElementById(id); if(el) el.style.borderColor = '#d9534f'; });
+}
+
 // FORM
 function submitForm(){
-  var name = document.getElementById('f-name').value.trim();
-  var email = document.getElementById('f-email').value.trim();
-  if(!name || !email){ alert('Vyplňte prosím meno a email.'); return; }
+  var d = {
+    meno: document.getElementById('f-name').value.trim(),
+    firma: document.getElementById('f-company').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    telefon: document.getElementById('f-phone').value.trim()
+  };
+  var err = validateLead(d);
+  var map = {'meno a priezvisko':'f-name','názov firmy':'f-company','platný e-mail':'f-email','platné telefónne číslo':'f-phone'};
+  markInvalid(['f-name','f-company','f-email','f-phone'], err.map(function(e){ return map[e]; }));
+  if(err.length){ alert('Doplňte prosím: ' + err.join(', ') + '.'); return; }
+  var name = d.meno, email = d.email;
   var btn = document.querySelector('.form-submit');
   btn.disabled = true;
   btn.textContent = 'Odosielam...';
@@ -1311,13 +1336,13 @@ function submitForm(){
 var BOTS = [
   {name:'Realitný asistent', avatar:'🏠',
    greeting:'Dobrý deň! Som realitný asistent. Pomôžem vám s informáciami o nehnuteľnostiach alebo dohodnutím obhliadky. Čím vám môžem pomôcť?',
-   prompt:'Si priatelsky AI asistent pre realtnu kancelariu. Pomahas zaujemcom s otazkami o nehnutelnostiach, cenach a obhlidkach. Hovoris vzdy po slovensky. Si strucny a profesionalny. Ked zaujemca prehlasi zaujem o obhlidku alebo kontakt, napis: Meno: [vase meno] a Email: [vas email]. Ked vyplni udaje, podakuj a informuj ze sa ozveme do 24 hodin.'},
+   prompt:'Si priatelsky AI asistent pre realtnu kancelariu. Pomahas zaujemcom s otazkami o nehnutelnostiach, cenach a obhlidkach. Hovoris vzdy po slovensky. Si strucny a profesionalny. Ked zaujemca prehlasi zaujem o obhlidku alebo kontakt, povedz mu, nech vyplni kratky kontaktny formular, ktory sa zobrazi priamo v chate (meno a priezvisko, firma, telefon, email). Kontaktne udaje nepytaj v texte. Ked formular odosle, sa ozveme do 24 hodin.'},
   {name:'Finančný poradca', avatar:'📊',
    greeting:'Dobrý deň! Som váš AI asistent pre finančné poradenstvo. Pomôžem vám s otázkami o sporení, investovaní alebo poistení. Na čo sa chcete opýtať?',
-   prompt:'Si priatelsky AI asistent financneho poradcu. Pomahas klientom s otazkami o sporeni, investiciach, hypotekach a poisteni. Hovoris vzdy po slovensky. Si profesionalny ale zrozumitelny. Ked klient prehlasi konkretny zaujem, napis: Meno: [vase meno] a Email: [vas email]. Ked vyplni udaje, podakuj a informuj ze poradca sa ozve do 24 hodin.'},
+   prompt:'Si priatelsky AI asistent financneho poradcu. Pomahas klientom s otazkami o sporeni, investiciach, hypotekach a poisteni. Hovoris vzdy po slovensky. Si profesionalny ale zrozumitelny. Ked klient prehlasi konkretny zaujem, povedz mu, nech vyplni kratky kontaktny formular, ktory sa zobrazi priamo v chate (meno a priezvisko, firma, telefon, email). Kontaktne udaje nepytaj v texte. Ked formular odosle, poradca sa ozve do 24 hodin.'},
   {name:'Zákaznícka podpora', avatar:'🛍',
    greeting:'Ahoj! Som tu, aby som vám pomohol s vaším nákupom alebo otázkami. Ako vám môžem pomôcť dnes?',
-   prompt:'Si priatelsky asistent zakazníckej podpory. Pomahas zakaznikom so sledovanim objednavok, vratenym tovaru a otazkami o produktoch. Hovoris vzdy po slovensky. Si ochotny a empaticky. Ked zakaznik potrebuje konkretnu pomoc, napis: Meno: [vase meno] a Email: [vas email]. Ked vyplni udaje, podakuj a informuj ze tim sa ozve do 24 hodin.'},
+   prompt:'Si priatelsky asistent zakazníckej podpory. Pomahas zakaznikom so sledovanim objednavok, vratenym tovaru a otazkami o produktoch. Hovoris vzdy po slovensky. Si ochotny a empaticky. Ked zakaznik potrebuje konkretnu pomoc, povedz mu, nech vyplni kratky kontaktny formular, ktory sa zobrazi priamo v chate (meno a priezvisko, firma, telefon, email). Kontaktne udaje nepytaj v texte. Ked formular odosle, tim sa ozve do 24 hodin.'},
 ];
 var currentBot = 0;
 var messages = [];
@@ -1339,6 +1364,7 @@ function switchBot(idx){
 function renderMessages(typing){
   var c = document.getElementById('chat-messages');
   var html = messages.map(function(m){
+    if(m.role==='card') return leadCardHtml(m);
     return '<div class="cm '+(m.role==='user'?'user':'bot')+'"><div class="cm-bubble">'+esc(m.content)+'</div></div>';
   }).join('');
   if(typing) html += '<div class="cm bot"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
@@ -1362,30 +1388,59 @@ async function chatSend(){
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
         system:BOTS[currentBot].prompt,
-        messages:messages.map(function(m){return{role:m.role,content:m.content};})
+        messages:messages.filter(function(m){return m.role==='user'||m.role==='assistant';}).map(function(m){return{role:m.role,content:m.content};})
       })
     });
     var data = await res.json();
     var reply = (data.content&&data.content[0]&&data.content[0].text)||'Prepáčte, nastala chyba.';
     messages.push({role:'assistant',content:reply});
-    if(!leadSent) detectLead(text);
+    if(!leadSent) detectLead(text, reply);
   }catch(e){
     messages.push({role:'assistant',content:'Prepáčte, nastala technická chyba.'});
   }
   loading = false;
   renderMessages(false);
 }
-function detectLead(userText){
+function detectLead(userText, reply){
+  if(leadSent || messages.some(function(m){return m.role==='card';})) return;
   var emailMatch = userText.match(/[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/);
-  if(!emailMatch) return;
-  var userTexts = messages.filter(function(m){return m.role==='user';}).map(function(m){return m.content;}).join(' ');
-  var nameMatch = userTexts.match(/meno\s*:\s*([^,\n\r]+)/i);
-  var m2 = !nameMatch ? userText.match(/^([A-Za-z\u00C0-\u017E]+ [A-Za-z\u00C0-\u017E]+)/) : null;
-  var name = nameMatch ? nameMatch[1].trim() : (m2 ? m2[1].trim() : 'Neznamy');
-  fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-    zdroj:'Chatbot – ' + BOTS[currentBot].name, meno:name, firma:'', email:emailMatch[0], telefon:'', web:'',
-    bot:BOTS[currentBot].name, sprava:userText, cas:new Date().toLocaleString('sk-SK'), url:window.location.href
-  })}).then(function(){leadSent=true;}).catch(function(){});
+  var phoneMatch = userText.match(/\+?[0-9][0-9 \/-]{7,}[0-9]/);
+  var wantsForm = /formul|kontakt/i.test(reply||'');
+  if(!emailMatch && !phoneMatch && !wantsForm) return;
+  messages.push({role:'card', email: emailMatch ? emailMatch[0] : '', telefon: phoneMatch ? phoneMatch[0] : ''});
+}
+function leadCardHtml(m){
+  if(m.sent) return '<div class="cm bot"><div class="cm-bubble">✓ Kontakt odoslaný. Ozveme sa vám do 24 hodín.</div></div>';
+  var f = function(id,ph,type,val){ return '<input class="form-input" style="margin:0 0 8px;width:100%;box-sizing:border-box" id="'+id+'" type="'+type+'" placeholder="'+ph+'" value="'+esc(val||'')+'">'; };
+  return '<div class="cm bot"><div class="cm-bubble" style="width:100%">Nechajte nám kontakt a ozveme sa vám:<div style="margin-top:10px">' +
+    f('lc-name','Meno a priezvisko *','text',m.meno) + f('lc-company','Firma *','text',m.firma) +
+    f('lc-phone','Telefón *','tel',m.telefon) + f('lc-email','E-mail *','email',m.email) +
+    '<button class="btn-primary" style="width:100%" onclick="sendLeadCard()">Odoslať kontakt</button></div></div></div>';
+}
+function sendLeadCard(){
+  var card = messages.filter(function(m){return m.role==='card';})[0];
+  if(!card || leadSent) return;
+  var d = {
+    meno: document.getElementById('lc-name').value.trim(),
+    firma: document.getElementById('lc-company').value.trim(),
+    telefon: document.getElementById('lc-phone').value.trim(),
+    email: document.getElementById('lc-email').value.trim()
+  };
+  card.meno=d.meno; card.firma=d.firma; card.telefon=d.telefon; card.email=d.email;
+  var err = validateLead(d);
+  var map = {'meno a priezvisko':'lc-name','názov firmy':'lc-company','platný e-mail':'lc-email','platné telefónne číslo':'lc-phone'};
+  markInvalid(['lc-name','lc-company','lc-email','lc-phone'], err.map(function(e){ return map[e]; }));
+  if(err.length){ alert('Doplňte prosím: ' + err.join(', ') + '.'); return; }
+  var convo = messages.filter(function(m){return m.role==='user';}).map(function(m){return m.content;}).slice(-5).join(' | ');
+  var payload = {
+    zdroj:'Chatbot – ' + BOTS[currentBot].name, meno:d.meno, firma:d.firma, email:d.email, telefon:d.telefon, web:'',
+    sprava:'Chatbot: ' + convo, cas:new Date().toLocaleString('sk-SK')
+  };
+  leadSent = true;
+  fetch('https://api.axiona-group.sk/send.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
+  fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
+  card.sent = true;
+  renderMessages(false);
 }
 function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
