@@ -1223,7 +1223,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 // =========================================
 var WORKER_URL = 'https://axiona-proxy.mdominik01.workers.dev';
 var EMAIL   = 'office@axiona-group.sk';
-var WEBHOOK = 'https://hook.eu1.make.com/5yr4gbeogvggl1jyiywhr1rhhjdbz9nf';
+var WEBHOOK = 'https://hook.eu1.make.com/2guic4tnnrc6ci6n3mqmjveaw1vhw1v8';
 // =========================================
 
 // Set emails
@@ -1280,6 +1280,7 @@ function submitForm(){
   btn.disabled = true;
   btn.textContent = 'Odosielam...';
   var payload = {
+    zdroj: 'Web – AI chatboty',
     meno: name,
     firma: document.getElementById('f-company').value.trim(),
     email: email,
@@ -1382,8 +1383,8 @@ function detectLead(userText){
   var m2 = !nameMatch ? userText.match(/^([A-Za-z\u00C0-\u017E]+ [A-Za-z\u00C0-\u017E]+)/) : null;
   var name = nameMatch ? nameMatch[1].trim() : (m2 ? m2[1].trim() : 'Neznamy');
   fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-    meno:name, email:emailMatch[0], bot:BOTS[currentBot].name,
-    sprava:userText, cas:new Date().toLocaleString('sk-SK'), url:window.location.href
+    zdroj:'Chatbot – ' + BOTS[currentBot].name, meno:name, firma:'', email:emailMatch[0], telefon:'', web:'',
+    bot:BOTS[currentBot].name, sprava:userText, cas:new Date().toLocaleString('sk-SK'), url:window.location.href
   })}).then(function(){leadSent=true;}).catch(function(){});
 }
 function esc(s){

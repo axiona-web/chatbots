@@ -1,6 +1,6 @@
 // ===== Axiona Group — shared site JS =====
 var EMAIL   = 'office@axiona-group.sk';
-var WEBHOOK = 'https://hook.eu1.make.com/5yr4gbeogvggl1jyiywhr1rhhjdbz9nf';
+var WEBHOOK = 'https://hook.eu1.make.com/2guic4tnnrc6ci6n3mqmjveaw1vhw1v8';
 
 document.addEventListener('DOMContentLoaded', function(){
   var cel = document.getElementById('contact-email-link');
@@ -47,6 +47,7 @@ function submitForm(){
   btn.textContent = 'Odosielam...';
   var msgEl = document.getElementById('f-msg');
   var payload = {
+    zdroj: 'Web – ' + document.title.split('|')[0].trim(),
     meno: name,
     firma: document.getElementById('f-company').value.trim(),
     email: email,
