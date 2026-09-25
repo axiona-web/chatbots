@@ -504,6 +504,12 @@ footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:13.5px;col
     send.disabled = true;
     msg.textContent = "Odosielam…";
 
+    // e-mailová notifikácia (rovnako ako formuláre na webe)
+    fetch("https://api.axiona-group.sk/send.php", {
+      method: "POST", headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({meno: payload.meno, firma: payload.firma, email: payload.email, telefon: payload.telefon,
+        web: payload.web, sprava: "obaly-check — " + payload.sprava, cas: payload.cas})
+    }).catch(function(){});
     fetch(FORM_ENDPOINT, {
       method: "POST",
       headers: {"Content-Type":"application/json"},
