@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Obalové povinnosti pri predaji do EÚ — rýchla kontrola</title>
+<meta name="description" content="Zistite za minútu, v ktorých krajinách EÚ vám vzniká registračná povinnosť za obaly a čo to približne stojí.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   KONFIGURÁCIA — zmeň iba tento riadok.
+   Vlož sem URL svojho Make.com webhooku alebo Formspree endpointu.
+   Kým je prázdny, formulár kontakt nikam neodošle a iba to napíše.
+   ===================================================================== */
+
+:root{
+  --paper:#ffffff;
+  --manila:#efece4;
+  --ink:#0f2a43;
+  --ink-soft:#5b6b7c;
+  --stamp:#c0261d;
+  --tape:#cba36a;
+  --rule:#d7d2c6;
+
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-body);
+  font-size:17px;
+  line-height:1.6;
+}
+
+/* --- prepravný pás navrchu, vernakulár prepravného štítku --- */
+.route{
+  background:var(--ink);
+  color:#e9eef3;
+  font-family:var(--f-mono);
+  font-size:12.5px;
+  letter-spacing:.02em;
+  padding:9px 20px;
+  display:flex;
+  gap:22px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.route span{white-space:nowrap}
+.route b{color:var(--tape);font-weight:600}
+
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* --- hero --- */
+.hero{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:44px;
+  padding:56px 0 40px;
+}
+@media(min-width:920px){
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,486px);gap:64px;align-items:start;padding:76px 0 56px}
+}
+
+h1{
+  font-family:var(--f-display);
+  font-weight:700;
+  font-size:clamp(32px,5.2vw,50px);
+  line-height:1.06;
+  letter-spacing:-.022em;
+  margin:0 0 22px;
+  max-width:15ch;
+}
+.lede{font-size:19px;line-height:1.55;max-width:46ch;margin:0 0 26px;color:var(--ink)}
+.sub{font-size:16px;line-height:1.6;max-width:50ch;color:var(--ink-soft);margin:0 0 20px}
+
+.facts{border-top:1px solid var(--rule);margin-top:30px;padding-top:6px;max-width:50ch}
+.fact{display:flex;gap:16px;padding:13px 0;border-bottom:1px solid var(--rule)}
+.fact dt{font-family:var(--f-mono);font-size:13px;color:var(--stamp);flex:0 0 84px;padding-top:3px;font-weight:600}
+.fact dd{margin:0;font-size:15.5px;line-height:1.5}
+
+/* --- deklaračný panel = hlavný prvok stránky --- */
+.decl{
+  background:var(--manila);
+  border:1px solid var(--rule);
+  position:relative;
+  padding:30px 26px 28px;
+}
+.decl::before{
+  content:"";
+  position:absolute;
+  top:-11px;left:34px;
+  width:118px;height:22px;
+  background:var(--tape);
+  opacity:.72;
+  transform:rotate(-1.6deg);
+}
+.decl h2{
+  font-family:var(--f-display);
+  font-weight:700;
+  font-size:21px;
+  letter-spacing:-.01em;
+  margin:0 0 6px;
+}
+.decl .hint{font-size:14.5px;color:var(--ink-soft);margin:0 0 22px;line-height:1.5}
+
+fieldset{border:0;padding:0;margin:0 0 24px}
+legend{
+  font-family:var(--f-mono);
+  font-size:13px;
+  font-weight:600;
+  padding:0;
+  margin-bottom:11px;
+}
+.legend-note{font-family:var(--f-body);font-weight:400;color:var(--ink-soft);font-size:13px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(min-width:520px){.grid{grid-template-columns:1fr 1fr 1fr}}
+
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;width:0;height:0}
+.opt span{
+  display:block;
+  background:var(--paper);
+  border:1px solid var(--rule);
+  padding:10px 11px;
+  font-family:var(--f-mono);
+  font-size:14px;
+  cursor:pointer;
+  transition:border-color .12s,background .12s;
+}
+.opt span:hover{border-color:var(--ink-soft)}
+.opt input:checked + span{
+  background:var(--ink);
+  color:var(--paper);
+  border-color:var(--ink);
+}
+.opt input:focus-visible + span{outline:2px solid var(--stamp);outline-offset:2px}
+
+.rowlist{display:flex;flex-direction:column;gap:8px}
+.rowlist .opt span{font-family:var(--f-body);font-size:15px}
+
+button{
+  font-family:var(--f-display);
+  font-weight:700;
+  font-size:16.5px;
+  letter-spacing:-.005em;
+  background:var(--ink);
+  color:var(--paper);
+  border:0;
+  padding:15px 22px;
+  width:100%;
+  cursor:pointer;
+}
+button:hover{background:#164066}
+button:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+button[disabled]{opacity:.45;cursor:not-allowed}
+
+/* --- výsledok --- */
+.result{display:none;border-top:2px solid var(--ink);margin-top:26px;padding-top:24px}
+.result.on{display:block}
+
+.stamp{
+  display:inline-block;
+  border:2.5px solid var(--stamp);
+  color:var(--stamp);
+  font-family:var(--f-display);
+  font-weight:700;
+  font-size:15px;
+  letter-spacing:.06em;
+  padding:7px 14px;
+  transform:rotate(-2.4deg);
+  margin-bottom:18px;
+}
+.count{
+  font-family:var(--f-display);
+  font-weight:700;
+  font-size:clamp(40px,9vw,62px);
+  line-height:1;
+  letter-spacing:-.03em;
+  margin:0 0 4px;
+}
+.count-label{font-size:15.5px;color:var(--ink-soft);margin:0 0 22px}
+
+.lines{border-top:1px solid var(--rule);margin-bottom:22px}
+.line{display:flex;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.line .k{color:var(--ink-soft)}
+.line .v{font-family:var(--f-mono);font-size:14.5px;text-align:right}
+
+.disclaim{font-size:13.5px;line-height:1.55;color:var(--ink-soft);margin:0 0 22px}
+
+.capture{background:var(--paper);border:1px solid var(--rule);padding:20px}
+.capture p{margin:0 0 14px;font-size:15.5px;line-height:1.5}
+label.fl{display:block;font-family:var(--f-mono);font-size:12.5px;margin-bottom:6px}
+input[type=email],input[type=text],input[type=tel]{
+  width:100%;
+  font-family:var(--f-mono);
+  font-size:15px;
+  padding:12px 12px;
+  border:1px solid var(--rule);
+  background:var(--manila);
+  color:var(--ink);
+  margin-bottom:13px;
+}
+input:focus{outline:2px solid var(--ink);outline-offset:-1px;background:var(--paper)}
+.msg{font-size:14.5px;margin:13px 0 0;line-height:1.5}
+.msg.ok{color:#1c6b3a}
+.msg.err{color:var(--stamp)}
+
+/* --- spodná sekcia --- */
+.why{border-top:1px solid var(--rule);padding:46px 0 64px;margin-top:22px}
+.why h2{font-family:var(--f-display);font-weight:700;font-size:25px;letter-spacing:-.015em;margin:0 0 24px}
+.why-grid{display:grid;gap:26px;grid-template-columns:1fr}
+@media(min-width:760px){.why-grid{grid-template-columns:repeat(3,1fr);gap:34px}}
+.why-grid h3{font-family:var(--f-display);font-weight:700;font-size:17px;margin:0 0 8px}
+.why-grid p{margin:0;font-size:15.5px;line-height:1.55;color:var(--ink)}
+
+footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:13.5px;color:var(--ink-soft);line-height:1.55}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="route">
+  <span>ODOSIELATEĽ <b>SK</b></span>
+  <span>PRÍJEMCA <b>EÚ</b></span>
+  <span>REŽIM <b>PPWR / EPR</b></span>
+  <span>ÚČINNOSŤ <b>12. 08. 2026</b></span>
+</div>
+
+<div class="wrap">
+
+  <section class="hero">
+    <div>
+      <h1>Posielate balíky do iných krajín EÚ? Pravdepodobne vám tam vznikla registračná povinnosť.</h1>
+
+      <p class="lede">Od augusta 2026 sa obal registruje v každej krajine, kam ho prvýkrát pošlete — nie iba tam, kde sídlite. Za minútu zistíte, koľkých krajín sa to u vás týka.</p>
+
+      <p class="sub">Nič neinštalujete a nikam sa neprihlasujete. Odpoviete na tri otázky a uvidíte výsledok hneď na tejto stránke.</p>
+
+      <dl class="facts">
+        <div class="fact">
+          <dt>Trhoviská</dt>
+          <dd>Veľké platformy pýtajú registračné číslo pre každý trh zvlášť. Bez neho produkt jednoducho nezalistujú.</dd>
+        </div>
+        <div class="fact">
+          <dt>Sankcie</dt>
+          <dd>Pokuty za nesplnenie povinnosti sa v niektorých krajinách šplhajú do desiatok tisíc eur.</dd>
+        </div>
+        <div class="fact">
+          <dt>Zástupca</dt>
+          <dd>Ak v danej krajine nemáte prevádzku, väčšinou potrebujete miestneho povereného zástupcu.</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- deklaračný panel -->
+    <div class="decl">
+      <h2>Kontrola obalových povinností</h2>
+      <p class="hint">Orientačný prehľad, nie právne stanovisko. Slúži na to, aby ste vedeli, čo si overiť.</p>
+
+      <form id="chk" novalidate>
+
+        <fieldset>
+          <legend>1 — Kam posielate tovar? <span class="legend-note">vyberte všetky</span></legend>
+          <div class="grid" id="countries">
+            <label class="opt"><input type="checkbox" name="c" value="SK"><span>Slovensko</span></label>
+            <label class="opt"><input type="checkbox" name="c" value="CZ"><span>Česko</span></label>
+            <label class="opt"><input type="checkbox" name="c" value="HU"><span>Maďarsko</span></label>
+            <label class="opt"><input type="checkbox" name="c" value="PL"><span>Poľsko</span></label>
+            <label class="opt"><input type="checkbox" name="c" value="AT"><span>Rakúsko</span></label>
+            <label class="opt"><input type="checkbox" name="c" value="DE"><span>Nemecko</span></label>
+            <label class="opt"><input type="checkbox" name="c" value="RO"><span>Rumunsko</span></label>
+            <label class="opt"><input type="checkbox" name="c" value="IT"><span>Taliansko</span></label>
+            <label class="opt"><input type="checkbox" name="c" value="XX"><span>Ďalšie</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>2 — Kde máte prevádzku alebo pobočku?</legend>
+          <div class="rowlist">
+            <label class="opt"><input type="radio" name="base" value="sk-only" checked><span>Iba na Slovensku</span></label>
+            <label class="opt"><input type="radio" name="base" value="few"><span>V niekoľkých z tých krajín</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>3 — Kto vám to dnes rieši?</legend>
+          <div class="rowlist">
+            <label class="opt"><input type="radio" name="who" value="nobody" checked><span>Nikto, riešim to sám alebo vôbec</span></label>
+            <label class="opt"><input type="radio" name="who" value="accountant"><span>Účtovník</span></label>
+            <label class="opt"><input type="radio" name="who" value="paid"><span>Platená služba alebo zástupca</span></label>
+          </div>
+        </fieldset>
+
+        <button type="submit">Zobraziť výsledok</button>
+      </form>
+
+      <!-- výsledok -->
+      <div class="result" id="res" role="status" aria-live="polite">
+        <div class="stamp" id="stamp">Na overenie</div>
+        <p class="count" id="num">0</p>
+        <p class="count-label" id="numlabel">krajín na preverenie</p>
+
+        <div class="lines" id="lines"></div>
+
+        <p class="disclaim" id="disc"></p>
+
+        <div class="capture">
+          <p id="captureText">Pošlem vám rozpis po krajinách — kde sa registruje, aké číslo dostanete a čo pýtajú trhoviská.</p>
+          <label class="fl" for="nm">Meno a priezvisko</label>
+          <input type="text" id="nm" placeholder="Ján Novák" autocomplete="name">
+          <label class="fl" for="co">Firma</label>
+          <input type="text" id="co" placeholder="Názov firmy" autocomplete="organization">
+          <label class="fl" for="ph">Telefón</label>
+          <input type="tel" id="ph" placeholder="+421 900 000 000" autocomplete="tel">
+          <label class="fl" for="em">E-mail</label>
+          <input type="email" id="em" placeholder="vas@eshop.sk" autocomplete="email">
+          <label class="fl" for="shop">Web e-shopu <span style="text-transform:none">(nepovinné)</span></label>
+          <input type="text" id="shop" placeholder="www.vaseshop.sk" autocomplete="url">
+          <button type="button" id="send">Poslať mi rozpis</button>
+          <p class="msg" id="msg"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why">
+    <h2>Čo sa vlastne zmenilo</h2>
+    <div class="why-grid">
+      <div>
+        <h3>Rozhoduje miesto doručenia</h3>
+        <p>Povinnosť vzniká tam, kde obal prvýkrát skončí na trhu. Zásielka do Maďarska znamená maďarskú registráciu, aj keď skladujete v Prešove.</p>
+      </div>
+      <div>
+        <h3>Trhoviská kontrolujú za úrad</h3>
+        <p>Platformy si vyžiadajú registračné číslo pre každý trh. Kontrola tak neprebehne o dva roky pri audite, ale v momente, keď chcete predávať.</p>
+      </div>
+      <div>
+        <h3>Každá krajina má vlastný register</h3>
+        <p>Neexistuje jedno miesto, kde sa to vybaví pre celú EÚ. Prihlasuje sa zvlášť, s vlastnými lehotami, formulármi a poplatkami.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Orientačná pomôcka pre e-shopy. Nejde o právne poradenstvo a odhady nákladov sú približné pásma z verejne dostupných zdrojov. Konkrétne povinnosti si overte v registri danej krajiny.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* Sem vlož URL webhooku (Make.com, Formspree, vlastný endpoint).
+     Kým je prázdny, kontakt sa neodošle a stránka to férovo povie. */
+  var FORM_ENDPOINT = "https://hook.eu1.make.com/2guic4tnnrc6ci6n3mqmjveaw1vhw1v8";
+
+  var form   = document.getElementById("chk");
+  var res    = document.getElementById("res");
+  var num    = document.getElementById("num");
+  var label  = document.getElementById("numlabel");
+  var lines  = document.getElementById("lines");
+  var disc   = document.getElementById("disc");
+  var stamp  = document.getElementById("stamp");
+  var msg    = document.getElementById("msg");
+  var send   = document.getElementById("send");
+  var captureText = document.getElementById("captureText");
+
+  var state = null;
+
+  function money(n){
+    return new Intl.NumberFormat("sk-SK").format(Math.round(n)) + " €";
+  }
+
+  function row(k, v){
+    var d = document.createElement("div");
+    d.className = "line";
+    var a = document.createElement("span"); a.className = "k"; a.textContent = k;
+    var b = document.createElement("span"); b.className = "v"; b.textContent = v;
+    d.appendChild(a); d.appendChild(b);
+    lines.appendChild(d);
+  }
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    var picked = Array.prototype.slice
+      .call(document.querySelectorAll('input[name="c"]:checked'))
+      .map(function(i){ return i.value; });
+
+    if(picked.length === 0){
+      stamp.textContent = "Chýba údaj";
+      num.textContent = "—";
+      label.textContent = "Vyberte aspoň jednu krajinu, kam posielate.";
+      lines.textContent = "";
+      disc.textContent = "";
+      res.classList.add("on");
+      res.scrollIntoView({behavior:"smooth", block:"nearest"});
+      return;
+    }
+
+    var base = (document.querySelector('input[name="base"]:checked')||{}).value;
+    var who  = (document.querySelector('input[name="who"]:checked')||{}).value;
+
+    var countries = picked.length;
+    /* Krajiny, kde nemáte prevádzku, spravidla potrebujú aj zástupcu. */
+    var needRep = base === "sk-only" ? Math.max(0, countries - 1) : Math.max(0, countries - 2);
+
+    /* Pásma z verejných zdrojov: registrácia 100–400 €/rok na krajinu,
+       poverený zástupca 200–600 €/rok na krajinu. */
+    var low  = countries * 100 + needRep * 200;
+    var high = countries * 400 + needRep * 600;
+
+    lines.textContent = "";
+    num.textContent = String(countries);
+    label.textContent = countries === 1
+      ? "krajina, kde si treba overiť registráciu"
+      : (countries < 5 ? "krajiny, kde si treba overiť registráciu"
+                       : "krajín, kde si treba overiť registráciu");
+
+    row("Samostatných registrácií", String(countries));
+    row("Z toho pravdepodobne aj so zástupcom", String(needRep));
+    row("Orientačné ročné náklady", money(low) + " – " + money(high));
+
+    if(who === "paid"){
+      stamp.textContent = "Zrejme pokryté";
+      disc.textContent = "Ak vám to už niekto rieši, porovnajte si tie čísla s tým, čo platíte. Rozdiely medzi poskytovateľmi bývajú výrazné.";
+      captureText.textContent = "Pošlem vám prehľad cien po krajinách, aby ste vedeli, či neplatíte viac než treba.";
+    } else if(who === "accountant"){
+      stamp.textContent = "Na overenie";
+      disc.textContent = "Účtovníci toto bežne nepokrývajú, lebo nejde o daňovú, ale o odpadovú agendu. Overte si u neho konkrétne registračné čísla pre každý trh.";
+      captureText.textContent = "Pošlem vám zoznam otázok pre účtovníka a rozpis registrácií po krajinách.";
+    } else {
+      stamp.textContent = "Neriešené";
+      disc.textContent = "Bez registrácie hrozí zamietnutie listingu na trhoviskách a sankcie zo strany dozorného orgánu v danej krajine.";
+      captureText.textContent = "Pošlem vám rozpis po krajinách — kde sa registruje, aké číslo dostanete a čo pýtajú trhoviská.";
+    }
+
+    state = {countries:picked, base:base, who:who, low:low, high:high};
+
+    res.classList.add("on");
+    res.scrollIntoView({behavior:"smooth", block:"nearest"});
+  });
+
+  send.addEventListener("click", function(){
+    var em = document.getElementById("em").value.trim();
+    var shop = document.getElementById("shop").value.trim();
+    msg.className = "msg";
+
+    var nm = document.getElementById("nm").value.trim();
+    var co = document.getElementById("co").value.trim();
+    var ph = document.getElementById("ph").value.trim();
+    var err = [];
+    var parts = nm.split(/\s+/).filter(function(p){ return p.replace(/[^A-Za-z\u00C0-\u017F]/g,"").length >= 2; });
+    if(parts.length < 2) err.push("meno a priezvisko");
+    if(co.length < 2) err.push("názov firmy");
+    if(!/^[+0-9 ()\/-]+$/.test(ph) || ph.replace(/\D/g,"").length < 9) err.push("platné telefónne číslo");
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) err.push("platný e-mail");
+    if(err.length){
+      msg.className = "msg err";
+      msg.textContent = "Doplňte prosím: " + err.join(", ") + ".";
+      return;
+    }
+
+    var payload = {
+      email: em,
+      shop: shop,
+      countries: state ? state.countries : [],
+      base: state ? state.base : null,
+      who: state ? state.who : null,
+      estimateLow: state ? state.low : null,
+      estimateHigh: state ? state.high : null,
+      ts: new Date().toISOString(),
+      // spoločné polia pre tabuľku axiona-dopyty
+      zdroj: "obaly-check",
+      cas: new Date().toLocaleString("sk-SK"),
+      meno: nm, firma: co, telefon: ph,
+      web: shop,
+      sprava: "Krajiny: " + (state ? state.countries.join(", ") : "—") +
+              " | Sídlo/sklad: " + (state ? state.base : "—") +
+              " | Rieši: " + (state ? state.who : "—") +
+              (state ? " | Odhad: " + state.low + "–" + state.high + " €" : "")
+    };
+
+    if(!FORM_ENDPOINT){
+      msg.className = "msg err";
+      msg.textContent = "Formulár zatiaľ nie je napojený. Doplňte FORM_ENDPOINT v skripte.";
+      console.log("Payload pripravený na odoslanie:", payload);
+      return;
+    }
+
+    send.disabled = true;
+    msg.textContent = "Odosielam…";
+
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(payload)
+    }).then(function(r){
+      if(!r.ok) throw new Error("HTTP " + r.status);
+      msg.className = "msg ok";
+      msg.textContent = "Hotovo. Rozpis vám príde na " + em + ".";
+      send.textContent = "Odoslané";
+    }).catch(function(){
+      send.disabled = false;
+      msg.className = "msg err";
+      msg.textContent = "Odoslanie zlyhalo. Skúste to prosím znova.";
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
