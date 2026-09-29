@@ -1,0 +1,200 @@
+/* ===== /reality/ — štýly len pre landing page realitných kancelárií =====
+   Nadväzuje na /site.css (tokeny, typografia, karty, formulár).
+   Všetky triedy majú prefix rl-, aby neovplyvnili iné stránky. */
+
+/* PRÍSTUPNOSŤ */
+.rl-page section[id]{scroll-margin-top:150px}
+.rl-page a:focus-visible,.rl-page button:focus-visible,.rl-page summary:focus-visible,.rl-page select:focus-visible,.rl-page input[type=checkbox]:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.rl-page .form-input:focus-visible,.rl-page .form-textarea:focus-visible{box-shadow:0 0 0 3px rgba(200,169,126,.18)}
+.rl-skip{position:absolute;left:12px;top:-60px;z-index:300;background:var(--accent);color:#1a1108;padding:10px 16px;border-radius:7px;font-size:14px;font-weight:500;text-decoration:none}
+.rl-skip:focus{top:12px}
+.rl-page .nav-cta,.rl-page .sticky-cta-btn{text-decoration:none}
+.rl-page .sticky-cta-btn{box-sizing:border-box}
+
+/* HERO */
+.rl-hero{min-height:auto;padding-bottom:64px}
+.rl-hero h1 em{display:block}
+.rl-hero-note{font-size:14px;color:var(--muted2);font-style:italic;margin-top:4px}
+
+/* WORKFLOW DIAGRAM */
+.rl-flow-section{padding-top:24px}
+.rl-flow-wrap{margin-top:44px;padding:40px 28px 34px;border:1px solid var(--border);border-radius:14px;background:linear-gradient(180deg,rgba(200,169,126,.05),rgba(200,169,126,.01))}
+.rl-flow{list-style:none;display:grid;grid-template-columns:repeat(7,1fr);position:relative;counter-reset:rl}
+.rl-flow::before{content:'';position:absolute;top:21px;left:calc(100% / 14);right:calc(100% / 14);height:2px;border-radius:2px;
+  background:linear-gradient(90deg,rgba(200,169,126,.18) 0%,rgba(200,169,126,.18) 42%,var(--accent) 50%,rgba(200,169,126,.18) 58%,rgba(200,169,126,.18) 100%);
+  background-size:300% 100%;background-position:100% 0;animation:rlFlowX 5s linear infinite}
+@keyframes rlFlowX{from{background-position:100% 0}to{background-position:0 0}}
+.rl-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 6px;counter-increment:rl}
+.rl-node-dot{width:44px;height:44px;border-radius:50%;border:1px solid var(--accent);background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:500;color:var(--accent);letter-spacing:.5px;margin-bottom:14px}
+.rl-node-dot::before{content:'0' counter(rl)}
+.rl-node:first-child .rl-node-dot,.rl-node:last-child .rl-node-dot{background:var(--accent);color:#1a1108}
+.rl-node-title{font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text);margin-bottom:6px;line-height:1.35}
+.rl-node-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.rl-flow-note{margin-top:28px;padding-top:20px;border-top:1px solid var(--border2);font-size:13px;color:var(--muted2);text-align:center;line-height:1.6}
+
+@media(max-width:900px){
+  .rl-flow-wrap{padding:28px 22px}
+  .rl-flow{grid-template-columns:1fr;gap:18px}
+  .rl-flow::before{top:22px;bottom:22px;left:21px;right:auto;width:2px;height:auto;
+    background:linear-gradient(180deg,rgba(200,169,126,.18) 0%,rgba(200,169,126,.18) 42%,var(--accent) 50%,rgba(200,169,126,.18) 58%,rgba(200,169,126,.18) 100%);
+    background-size:100% 300%;background-position:0 100%;animation-name:rlFlowY}
+  .rl-node{display:grid;grid-template-columns:44px 1fr;column-gap:16px;align-items:center;text-align:left;padding:0}
+  .rl-node-dot{margin-bottom:0;grid-row:span 2}
+  .rl-node-title{margin-bottom:2px;align-self:end}
+  .rl-node-desc{align-self:start}
+}
+@keyframes rlFlowY{from{background-position:0 100%}to{background-position:0 0}}
+
+/* PROBLÉM — 6 kariet */
+.rl-problem-grid{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.rl-problem-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.rl-problem-grid{grid-template-columns:1fr}}
+
+/* ČO AUTOMATIZUJEME */
+.rl-num{font-size:12px;letter-spacing:1.5px;color:var(--accent);margin-bottom:14px;font-weight:500}
+.rl-page .deliverable-card .del-title{text-transform:uppercase;letter-spacing:1px;font-size:13px}
+.rl-page .del-desc{font-size:13px}
+.rl-page .deliverables-note p{font-style:normal}
+
+/* PRED / PO */
+.rl-ba{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:44px}
+.rl-ba-col{padding:28px 26px;border:1px solid var(--border2);border-radius:14px;background:var(--dark2)}
+.rl-ba-col.after{border-color:rgba(200,169,126,.4);background:rgba(200,169,126,.04)}
+.rl-ba-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.rl-ba-col.after .rl-ba-label{color:var(--accent)}
+.rl-ba-steps{list-style:none;display:flex;flex-direction:column}
+.rl-ba-steps li{position:relative;padding:0 0 18px 26px;font-size:14px;color:var(--muted2);line-height:1.5}
+.rl-ba-steps li:last-child{padding-bottom:0}
+.rl-ba-steps li::before{content:'';position:absolute;left:4px;top:6px;width:8px;height:8px;border-radius:50%;border:1.5px solid var(--muted)}
+.rl-ba-steps li:not(:last-child)::after{content:'';position:absolute;left:7.5px;top:18px;bottom:2px;width:1px;background:var(--border2)}
+.rl-ba-col.after .rl-ba-steps li{color:var(--text)}
+.rl-ba-col.after .rl-ba-steps li::before{border-color:var(--accent);background:var(--accent)}
+.rl-ba-col.after .rl-ba-steps li:not(:last-child)::after{background:rgba(200,169,126,.35)}
+.rl-ba-steps .rl-manual{color:var(--muted);font-size:12px;display:block;margin-top:2px}
+.rl-page .rl-ba-col.after .rl-manual{color:var(--muted2)}
+.rl-ba-foot{margin-top:20px;font-size:13px;color:var(--muted);text-align:center;line-height:1.65;font-style:italic}
+@media(max-width:768px){.rl-ba{grid-template-columns:1fr}}
+
+/* REALITNÁ ÚNIA SR */
+.rl-offer{margin-top:8px;padding:40px 36px;border:1px solid rgba(200,169,126,.4);border-radius:16px;background:linear-gradient(135deg,rgba(200,169,126,.09),rgba(200,169,126,.02));display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
+.rl-offer .section-title{margin-bottom:12px}
+.rl-offer-lead{font-size:15px;color:var(--muted2);line-height:1.7;margin-bottom:24px}
+.rl-offer-benefits{list-style:none;display:flex;flex-direction:column;gap:14px}
+.rl-offer-benefits li{padding:18px 20px;border:1px solid var(--border);border-radius:12px;background:var(--dark2)}
+.rl-offer-benefits strong{display:block;font-size:15px;font-weight:500;color:var(--text);margin-bottom:4px}
+.rl-offer-benefits span{font-size:13px;color:var(--muted2);line-height:1.55}
+/* príklad výpočtu 15 % + kredit */
+.rl-calc{margin-top:14px;padding:18px 20px;border:1px solid rgba(200,169,126,.4);border-radius:12px;background:rgba(200,169,126,.06)}
+.rl-calc-title{font-size:14px;font-weight:500;color:var(--text);margin-bottom:10px}
+.rl-calc-list{margin:0}
+.rl-calc-list > div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:6px 0;font-size:14px;color:var(--muted2);font-variant-numeric:tabular-nums}
+.rl-calc-list dt,.rl-calc-list dd{margin:0}
+.rl-calc-list dd{white-space:nowrap;text-align:right}
+.rl-calc-list .rl-calc-total{margin-top:6px;padding-top:10px;border-top:1px solid rgba(200,169,126,.35);color:var(--accent);font-weight:500;font-size:15.5px}
+.rl-calc-note{margin-top:10px;font-size:12px;color:var(--muted);line-height:1.55}
+.rl-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.rl-offer-notes a{color:var(--accent);white-space:nowrap}
+.rl-offer-notes{margin-top:18px;display:flex;flex-direction:column;gap:6px}
+.rl-offer-notes p{font-size:12.5px;color:var(--muted);line-height:1.6}
+.rl-offer .btn-primary{margin-top:6px}
+@media(max-width:900px){.rl-offer{grid-template-columns:1fr;gap:28px;padding:30px 24px}}
+
+/* PRÍKLADY AUTOMATIZÁCIÍ */
+.rl-uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+.rl-uc{padding:28px 24px;border:1px solid var(--border2);border-radius:14px;background:var(--dark2);display:flex;flex-direction:column}
+.rl-uc-num{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.rl-uc-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:400;color:var(--text);line-height:1.35;margin-bottom:20px}
+.rl-chain{list-style:none;display:flex;flex-direction:column;gap:0;margin-bottom:20px;flex:1}
+.rl-chain li{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted2);padding:9px 12px;border:1px solid var(--border2);border-radius:8px;background:rgba(240,236,228,.02)}
+.rl-chain li+li{margin-top:18px;position:relative}
+.rl-chain li+li::before{content:'';position:absolute;left:18px;top:-18px;height:18px;width:1px;background:rgba(200,169,126,.35)}
+.rl-chain li.human{border-color:rgba(200,169,126,.45);color:var(--text)}
+.rl-chain-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-left:3px}
+.rl-chain li.human .rl-chain-dot{background:transparent;border:1.5px solid var(--accent)}
+.rl-tag{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.rl-uc-foot{font-size:12.5px;color:var(--muted);line-height:1.6;padding-top:16px;border-top:1px solid var(--border2)}
+.rl-legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;font-size:12.5px;color:var(--muted)}
+.rl-legend span{display:inline-flex;align-items:center;gap:8px}
+.rl-legend i{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block}
+.rl-legend i.h{background:transparent;border:1.5px solid var(--accent)}
+@media(max-width:900px){.rl-uc-grid{grid-template-columns:1fr}}
+
+/* NA MIERU */
+.rl-custom .section-sub{max-width:none;margin-bottom:16px}
+
+/* CENNÍK — riadkový zoznam */
+.rl-prices{margin-top:40px;border:1px solid var(--border2);border-radius:14px;overflow:hidden;background:var(--dark2)}
+.rl-price-row{display:grid;grid-template-columns:240px 1fr 150px;gap:28px;align-items:center;padding:24px 28px;border-bottom:1px solid var(--border2)}
+.rl-price-row:last-child{border-bottom:none}
+.rl-price-row.first{background:rgba(200,169,126,.05)}
+.rl-price-name{font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text)}
+.rl-price-desc{font-size:13.5px;color:var(--muted2);line-height:1.6}
+.rl-price-amount{font-family:'Playfair Display',serif;font-size:26px;color:var(--accent);white-space:nowrap;text-align:right}
+.rl-price-amount small{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);margin-right:4px}
+.rl-price-foot{margin-top:22px;display:flex;flex-direction:column;gap:8px;text-align:center}
+.rl-price-foot p{font-size:13px;color:var(--muted2);line-height:1.65}
+.rl-price-foot .rl-small{font-size:12.5px;color:var(--muted);font-style:italic}
+.rl-price-foot a{color:var(--accent)}
+.rl-price-cta{text-align:center;margin-top:28px}
+@media(max-width:768px){
+  .rl-price-row{grid-template-columns:1fr auto;gap:8px 16px;padding:20px}
+  .rl-price-desc{grid-column:1/-1;grid-row:2}
+  .rl-price-amount{font-size:22px}
+}
+
+/* ZÁVEREČNÉ CTA */
+.rl-final{text-align:center;padding:96px 24px;position:relative;overflow:hidden}
+.rl-final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(200,169,126,.07) 0%,transparent 65%);pointer-events:none}
+.rl-final .container-sm{position:relative}
+.rl-final .section-sub{margin:0 auto 32px;max-width:600px}
+.rl-final .hero-actions{margin-bottom:0}
+
+/* FORMULÁR */
+.rl-page .form-select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px;cursor:pointer}
+.rl-page .form-select option{background:var(--dark2);color:var(--text)}
+.rl-page .form-input[aria-invalid=true],.rl-page .form-textarea[aria-invalid=true]{border-color:#e05555}
+.rl-err{font-size:12px;color:#f08080;line-height:1.4;min-height:0}
+.rl-err:empty{display:none}
+.rl-opt{text-transform:none;letter-spacing:0;color:var(--muted);font-size:11.5px}
+.rl-check{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--muted2);line-height:1.5;cursor:pointer;padding:12px 14px;border:1.5px solid var(--border2);border-radius:8px;background:rgba(240,236,228,.03)}
+.rl-check input{width:17px;height:17px;margin-top:1px;accent-color:var(--accent);flex-shrink:0;cursor:pointer}
+.rl-form-error{display:none;padding:12px 14px;border:1px solid rgba(224,85,85,.4);background:rgba(224,85,85,.08);border-radius:8px;font-size:13px;color:#f3a0a0;line-height:1.55}
+.rl-form-error.show{display:block}
+.rl-form-error a{color:var(--accent)}
+.rl-page .form-submit:disabled{opacity:.6;cursor:wait}
+.rl-page .form-success:focus{outline:none}
+
+/* OBMEDZENÉ ANIMÁCIE */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .rl-flow::before{animation:none;background:rgba(200,169,126,.3)}
+  .rl-page .hero-inner{animation:none}
+  .rl-page .hero-badge::before{animation:none}
+  .rl-page *{transition-duration:.01ms !important}
+}
+
+/* sémantické nadpisy (h2/h3) s vizuálom pôvodných div tried */
+.rl-page h2.cl-title,.rl-page h3.rl-ba-label{font-weight:400}
+
+/* hero bez 100vh — väčší odstup od fixnej navigácie + promo lišty */
+.rl-page .hero.rl-hero{padding-top:200px !important}
+@media(max-width:768px){.rl-page .hero.rl-hero{padding-top:168px !important;padding-bottom:48px}}
+.rl-price-amount.rl-custom-price{font-size:19px}
+
+/* .need-section / .problem-section majú v site.css horizontálny padding 0 — doplnený okraj */
+.rl-page .need-section,.rl-page .problem-section{padding-left:24px;padding-right:24px}
+@media(max-width:768px){.rl-page .need-section,.rl-page .problem-section{padding-left:20px;padding-right:20px}}
+@media(max-width:480px){.rl-page .need-section,.rl-page .problem-section{padding-left:18px;padding-right:18px}}
+
+/* HERO — výhody pre členov RÚ */
+.rl-hero-offer{max-width:470px;margin:-8px auto 30px;padding:16px 22px 14px;border:1px solid rgba(200,169,126,.4);border-radius:12px;background:rgba(200,169,126,.07);text-align:left}
+.rl-hero-offer ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.rl-hero-offer li{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:500;color:var(--text);line-height:1.45}
+.rl-hero-offer li::before{content:'✓';color:var(--accent);flex-shrink:0}
+.rl-hero-terms{display:inline-block;margin-top:10px;font-size:12px;color:var(--muted2);text-decoration:underline;text-underline-offset:2px}
+.rl-hero-terms:hover{color:var(--accent)}
+
+/* SEKCIA RÚ — najvýraznejšia sekcia stránky */
+.rl-ru-section{background:rgba(200,169,126,.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.rl-ru-section .rl-offer{border:2px solid var(--accent);margin-top:0}
+.rl-nonmember{font-size:13px;margin-top:-14px}
