@@ -1,0 +1,39 @@
+/* Svetlý / tmavý motív (2026-10). Predvolený je tmavý — pôvodný vzhľad webu; voľba sa pamätá v prehliadači.
+   Farby stránok sú premenné (site.css :root), tu sa len prepíšu pre svetlý motív. */
+:root[data-theme=light]{
+  --dark:#ffffff;--dark2:#f7f6f2;--dark3:#efebe3;
+  --text:#16161b;--muted:#6b665d;--muted2:#4a463f;
+  --accent:#a27c48;--accent-light:rgba(162,124,72,.12);
+  --border:rgba(162,124,72,.28);--border2:rgba(22,22,27,.1);
+  --ink-rgb:22,22,27;--gold-rgb:162,124,72;--bg-rgb:255,255,255;
+  color-scheme:light;
+}
+:root[data-theme=light] .form-success{color:#1f7a50}
+
+/* pravá časť menu: CTA + prepínač + hamburger */
+.nav-end{display:flex;align-items:center;gap:12px}
+nav .nav-end .nav-cta{margin:0}
+.theme-toggle{display:flex;align-items:center;justify-content:center;width:36px;height:36px;flex:none;padding:0;border-radius:50%;
+  background:none;border:1px solid var(--border2);color:var(--muted2);cursor:pointer;transition:color .2s,border-color .2s}
+.theme-toggle:hover{color:var(--text);border-color:var(--border)}
+.theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.theme-toggle svg{width:17px;height:17px}
+.theme-toggle .i-moon{display:none}
+:root[data-theme=light] .theme-toggle .i-sun{display:none}
+:root[data-theme=light] .theme-toggle .i-moon{display:block}
+
+/* logo: tmavý obrázok v tmavom motíve, kreslené logo vo svetlom */
+.logo-light{display:none;align-items:center;gap:calc(var(--h) * .16);height:var(--h);text-decoration:none}
+.logo-light svg{height:calc(var(--h) * .7);width:auto}
+.logo-light .w{display:block;font-family:'Playfair Display',serif;font-size:calc(var(--h) * .42);line-height:1;color:var(--text)}
+.logo-light .g{display:block;font-family:'DM Sans',sans-serif;font-size:calc(var(--h) * .15);letter-spacing:.55em;color:var(--accent);font-weight:500;margin-top:calc(var(--h) * .07)}
+.logo-light .mk-l line{stroke:var(--accent);stroke-opacity:.55;stroke-width:1.6}
+.logo-light .mk-a{stroke:var(--accent);stroke-width:2}
+.logo-light .mk-o{fill:var(--dark);stroke:var(--text);stroke-opacity:.75;stroke-width:2}
+.logo-light .mk-o.dim{stroke-opacity:.38}
+.logo-light .mk-o.go{stroke:var(--accent);stroke-opacity:1;stroke-width:2.2}
+.logo-light .mk-f{fill:var(--accent)}
+.logo-light .mk-r{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+:root[data-theme=light] .logo-dark{display:none !important}
+:root[data-theme=light] .logo-light{display:flex}
+a:has(> .logo-light),a:has(> .logo-dark){text-decoration:none}
