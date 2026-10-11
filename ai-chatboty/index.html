@@ -79,24 +79,36 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "Lead Bot",
-          "price": "390",
+          "name": "Základ",
+          "price": "90",
           "priceCurrency": "EUR",
-          "description": "Základný AI chatbot na zachytávanie leadov z webu"
+          "description": "Zriadenie: kontaktný formulár + chatbot na časté otázky, kontakty do e-mailu",
+          "priceSpecification": [
+            {"@type": "UnitPriceSpecification", "name": "Zriadenie", "price": "90", "priceCurrency": "EUR"},
+            {"@type": "UnitPriceSpecification", "name": "Mesačný paušál", "price": "29", "priceCurrency": "EUR", "referenceQuantity": {"@type": "QuantitativeValue", "value": "1", "unitCode": "MON"}}
+          ]
         },
         {
           "@type": "Offer",
-          "name": "Qualification Bot",
-          "price": "690",
+          "name": "Štandard",
+          "price": "190",
           "priceCurrency": "EUR",
-          "description": "AI chatbot s kvalifikáciou leadov a lead scoringom"
+          "description": "Zriadenie: chatbot naučený na ponuky a služby firmy, okamžitá odpoveď 24/7, záznam dopytov do tabuľky",
+          "priceSpecification": [
+            {"@type": "UnitPriceSpecification", "name": "Zriadenie", "price": "190", "priceCurrency": "EUR"},
+            {"@type": "UnitPriceSpecification", "name": "Mesačný paušál", "price": "69", "priceCurrency": "EUR", "referenceQuantity": {"@type": "QuantitativeValue", "value": "1", "unitCode": "MON"}}
+          ]
         },
         {
           "@type": "Offer",
-          "name": "Booking Bot",
-          "price": "990",
+          "name": "Profi",
+          "price": "290",
           "priceCurrency": "EUR",
-          "description": "AI chatbot s rezervačným systémom a kalendárom"
+          "description": "Zriadenie: Štandard + CRM, automatické follow-upy a pripomienky, týždenný report",
+          "priceSpecification": [
+            {"@type": "UnitPriceSpecification", "name": "Zriadenie", "price": "290", "priceCurrency": "EUR"},
+            {"@type": "UnitPriceSpecification", "name": "Mesačný paušál", "price": "129", "priceCurrency": "EUR", "referenceQuantity": {"@type": "QuantitativeValue", "value": "1", "unitCode": "MON"}}
+          ]
         }
       ]
     },
@@ -109,7 +121,7 @@
           "name": "Ako dlho trvá nasadenie AI chatbota?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Lead Bot nasadíme do 48 hodín od prijatia podkladov. Komplexnejšie riešenia trvajú dlhšie podľa rozsahu projektu."
+            "text": "Balík Základ nasadíme do 48 hodín od prijatia podkladov. Štandard a Profi trvajú 3–7 dní podľa rozsahu, riešenie na mieru sa navrhuje individuálne."
           }
         },
         {
@@ -133,7 +145,7 @@
           "name": "Koľko stojí AI chatbot pre firmy?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ceny začínajú od 390 € setup + 49 € mesačne pre Lead Bot. Pilotná ponuka: setup od 290 € + prvý mesiac zadarmo."
+            "text": "Balík Základ stojí 90 € zriadenie + 29 € mesačne, Štandard 190 € + 69 € mesačne a Profi 290 € + 129 € mesačne. Paušál zahŕňa prevádzku, náklady na AI a hosting, podporu a drobné úpravy. Bez viazanosti, ročný paušál vopred = 2 mesiace zadarmo."
           }
         },
         {
@@ -309,6 +321,15 @@ section{padding:80px 24px}
 .ni-item{font-size:13px;color:var(--muted);display:flex;align-items:flex-start;gap:8px}
 .ni-item::before{content:'–';color:var(--muted);flex-shrink:0}
 .pricing-footnote{margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.65;font-style:italic;text-align:center}
+.price-rules{margin-top:20px;padding:24px 28px;border:1px solid var(--border2);border-radius:14px;background:var(--dark2)}
+.price-rules .pr-title{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.price-rules ul{list-style:none;display:grid;gap:8px;margin:0;padding:0}
+.price-rules li{font-size:13.5px;color:var(--muted2);line-height:1.6;display:flex;gap:8px}
+.price-rules li::before{content:'✓';color:var(--accent);font-weight:500;flex-shrink:0}
+.price-rules a{color:var(--accent)}
+.price-rules .pr-note{margin-top:12px;font-size:12.5px;color:var(--muted)}
+.price-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+@media(max-width:480px){.price-rules{padding:20px 18px}.price-cta>*{flex:1 1 100%;text-align:center}}
 
 /* FAQ */
 .faq-list{display:flex;flex-direction:column;gap:0;margin-top:48px;border:1px solid var(--border2);border-radius:14px;overflow:hidden}
@@ -383,7 +404,7 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 /* RESPONSIVE */
 @media(max-width:900px){
   .pricing-grid{grid-template-columns:1fr}
-  .steps-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .steps-grid{grid-template-columns:1fr 1fr !important;gap:24px}
   .steps-grid::before{display:none}
   .cs-grid{grid-template-columns:1fr}
   .footer-top{grid-template-columns:1fr}
@@ -727,7 +748,7 @@ nav{top:38px !important}.hero{padding-top:160px !important}
         </div>
         <div class="case-solution">
           <strong>Riešenie</strong>
-          Nasadený Lead Bot — odpovedá na otázky o nehnuteľnostiach, pýta sa na typ záujmu, rozpočet a horizont. Kontakt ide emailom maklérom.
+          Nasadený chatbot — odpovedá na otázky o nehnuteľnostiach, pýta sa na typ záujmu, rozpočet a horizont. Kontakt ide emailom maklérom.
         </div>
         <div class="case-result">
           <div class="case-result-label">Výsledok</div>
@@ -742,7 +763,7 @@ nav{top:38px !important}.hero{padding-top:160px !important}
         </div>
         <div class="case-solution">
           <strong>Riešenie</strong>
-          Qualification Bot — pred hovorom sa záujemcu opýta na typ produktu, horizont a aktuálne zmluvy. Poradca dostane štruktúrovaný sumár.
+          Chatbot s kvalifikáciou — pred hovorom sa záujemcu opýta na typ produktu, horizont a aktuálne zmluvy. Poradca dostane štruktúrovaný sumár.
         </div>
         <div class="case-result">
           <div class="case-result-label">Výsledok</div>
@@ -757,7 +778,7 @@ nav{top:38px !important}.hero{padding-top:160px !important}
         </div>
         <div class="case-solution">
           <strong>Riešenie</strong>
-          Lead Bot s FAQ — odpovedá na bežné otázky, zbiera kontakt záujemcu a posiela notifikáciu. Rezervácia termínu cez odkaz na kalendár.
+          Chatbot s FAQ — odpovedá na bežné otázky, zbiera kontakt záujemcu a posiela notifikáciu. Rezervácia termínu cez odkaz na kalendár.
         </div>
         <div class="case-result">
           <div class="case-result-label">Výsledok</div>
@@ -947,7 +968,7 @@ nav{top:38px !important}.hero{padding-top:160px !important}
         <div class="step-desc">Chatbot pracuje 24/7. Leady chodia na email, vy sa venujete biznisu.</div>
       </div>
     </div>
-    <div class="steps-note">Lead Bot nasadíme do 48 hodín. Presný termín závisí od rozsahu projektu.</div>
+    <div class="steps-note">Balík Základ nasadíme do 48 hodín. Presný termín závisí od rozsahu projektu.</div>
   </div>
 </section>
 
@@ -1078,68 +1099,76 @@ nav{top:38px !important}.hero{padding-top:160px !important}
   <div class="container">
     <div class="section-label">Cenník</div>
     <h2 class="section-title">Cenník AI chatbotov pre firmy</h2>
-    <div class="pricing-note-top">Transparentné ceny bez skrytých poplatkov. Presná cena závisí od rozsahu a počtu scenárov.</div>
+    <div class="pricing-note-top">Jednorazové zriadenie + mesačný paušál. Žiadne skryté poplatky, bez viazanosti.</div>
     <div class="pricing-grid">
       <div class="price-card">
-        <div class="price-tag" style="background:rgba(45,158,107,.15);color:#2d9e6b;border-color:rgba(45,158,107,.3)">⚡ Pilotná ponuka</div>
-        <div class="price-name">Lead Bot</div>
-        <div class="price-pitch">Zachytí záujemcov z webu aj keď ste offline. Odpovedá, zbiera kontakt, upozorní vás.</div>
-        <div class="price-amount" style="text-decoration:line-through;opacity:.45;font-size:18px;margin-bottom:4px">od 390 € jednorazovo</div>
-        <div class="price-amount" style="margin-bottom:4px">od 290 € <span>jednorazovo</span></div>
-        <div class="price-monthly" style="color:#2d9e6b;font-weight:500">+ prvý mesiac zadarmo</div>
-        <div style="font-size:12px;color:var(--muted);margin-bottom:12px;margin-top:4px">Limitovaná ponuka pre prvých klientov</div>
+        <div class="price-tag">Na začiatok</div>
+        <div class="price-name">Základ</div>
+        <div class="price-pitch">Kontaktný formulár a chatbot na časté otázky. Kontakty vám chodia rovno do e-mailu.</div>
+        <div class="price-amount">90 € <span>zriadenie</span></div>
+        <div class="price-monthly">+ 29 € / mesiac</div>
         <ul class="price-features">
-          <li>Odpovede na časté otázky 24/7</li>
-          <li>Zber mena a emailu záujemcu</li>
-          <li>Notifikácia na váš email</li>
-          <li>Prehľad leadov v tabuľke</li>
+          <li>Chatbot na časté otázky 24/7</li>
+          <li>Kontaktný formulár priamo v chate</li>
+          <li>Kontakty a dopyty do e-mailu</li>
           <li>Nasadenie do 48 hodín</li>
         </ul>
         <a id="btn-price1" class="btn-ghost" onclick="scroll2('kontakt')" style="text-align:center;margin-top:auto;cursor:pointer">Mám záujem</a>
       </div>
       <div class="price-card featured">
         <div class="price-tag">Odporúčané</div>
-        <div class="price-name">Qualification Bot</div>
-        <div class="price-pitch">Nezachytí len kontakt — opýta sa na kľúčové detaily a pošle vám kvalifikovaný lead.</div>
-        <div class="price-amount">od 690 € <span>jednorazovo</span></div>
-        <div class="price-monthly">+ od 99 € / mesiac</div>
+        <div class="price-name">Štandard</div>
+        <div class="price-pitch">Chatbot naučený na vaše ponuky a služby. Odpovie okamžite, 24/7, a každý dopyt zapíše do tabuľky.</div>
+        <div class="price-amount">190 € <span>zriadenie</span></div>
+        <div class="price-monthly">+ 69 € / mesiac</div>
         <ul class="price-features">
-          <li>Všetko z Lead Bot</li>
-          <li>Kvalifikačné otázky na mieru</li>
-          <li>Prioritizácia — HOT / WARM / COLD</li>
-          <li>Štruktúrovaný sumár pre obchodníka</li>
-          <li>CRM alebo Sheets integrácia</li>
+          <li>Všetko zo Základu</li>
+          <li>Naučený na vaše ponuky a služby</li>
+          <li>Okamžitá odpoveď 24/7</li>
+          <li>Záznam dopytov do tabuľky</li>
         </ul>
         <a id="btn-price2" class="btn-primary" onclick="scroll2('kontakt')" style="text-align:center;margin-top:auto;cursor:pointer">Mám záujem</a>
       </div>
       <div class="price-card">
-        <div class="price-tag">Rezervácie</div>
-        <div class="price-name">Booking Bot</div>
-        <div class="price-pitch">Pre firmy kde predaj prebieha cez stretnutie. Bot rezervuje termín priamo v chate.</div>
-        <div class="price-amount">od 990 € <span>jednorazovo</span></div>
-        <div class="price-monthly">+ od 119 € / mesiac</div>
+        <div class="price-tag">Pre obchodný tím</div>
+        <div class="price-name">Profi</div>
+        <div class="price-pitch">Štandard prepojený s vaším CRM. Sám pripomína a posiela follow-upy, každý týždeň dostanete report.</div>
+        <div class="price-amount">290 € <span>zriadenie</span></div>
+        <div class="price-monthly">+ 129 € / mesiac</div>
         <ul class="price-features">
-          <li>Všetko z Qualification Bot</li>
-          <li>Prepojenie na kalendár (Calendly)</li>
-          <li>Rezervačný flow v konverzácii</li>
-          <li>Potvrdenia a remindery emailom</li>
-          <li>Zníženie počtu no-show</li>
+          <li>Všetko zo Štandardu</li>
+          <li>Prepojenie s CRM</li>
+          <li>Automatické follow-upy a pripomienky</li>
+          <li>Týždenný report</li>
+          <li>S uvítacím kreditom zriadenie len 190 €</li>
         </ul>
         <a id="btn-price3" class="btn-ghost" onclick="scroll2('kontakt')" style="text-align:center;margin-top:auto;cursor:pointer">Mám záujem</a>
       </div>
     </div>
-    <div class="price-custom" style="flex-direction:column;align-items:flex-start;gap:20px">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;width:100%;gap:24px;flex-wrap:wrap">
-        <div class="pc-left">
-          <div class="pc-name">Riešenie na mieru — AI Front Desk</div>
-          <div class="pc-desc" style="max-width:600px">Pre firmy s obchodným tímom, CRM systémom a väčším objemom dopytov. Kombinuje chatbot, kvalifikáciu, rezervácie, CRM integráciu a pravidelný reporting do jedného riešenia.</div>
-        </div>
-        <a id="btn-price4" class="btn-ghost" onclick="scroll2('kontakt')" style="white-space:nowrap;flex-shrink:0;cursor:pointer">Mám záujem</a>
+    <div class="price-custom" style="flex-wrap:wrap">
+      <div class="pc-left">
+        <div class="pc-name">Na mieru</div>
+        <div class="pc-desc" style="max-width:600px">Viac prepojených procesov a systémov — chatbot, kvalifikácia, rezervácie, CRM a reporting v jednom riešení. Zriadenie aj paušál individuálne podľa rozsahu.</div>
       </div>
-      <div style="font-size:13px;color:var(--muted);font-style:italic">Cena na mieru — setup od 1 490 € + od 149 € / mesiac</div>
+      <a id="btn-price4" class="btn-ghost" onclick="scroll2('kontakt')" style="white-space:nowrap;flex-shrink:0;cursor:pointer">Mám záujem</a>
     </div>
-    <div class="pricing-footnote">Presná cena sa môže meniť podľa rozsahu podkladov, počtu scenárov a požadovaných integrácií.</div>
-    <div class="pricing-footnote" style="margin-top:8px;color:var(--accent)">⚡ Doba nasadenia: Lead Bot od 48 hodín — komplexnejšie riešenia podľa rozsahu projektu.</div>
+    <div class="price-rules">
+      <div class="pr-title">Ako funguje platba</div>
+      <ul>
+        <li><span><strong>Zriadenie</strong> sa platí jednorazovo pred spustením, <strong>paušál</strong> mesačne vopred.</span></li>
+        <li><span>Bez viazanosti — službu zrušíte kedykoľvek ku koncu zaplateného mesiaca. Pri neuhradení sa služba pozastaví.</span></li>
+        <li><span>Paušál zahŕňa prevádzku, náklady na AI a hosting, podporu a drobné úpravy — žiadne skryté poplatky.</span></li>
+        <li><span>Ročný paušál zaplatený vopred = 2 mesiace zadarmo.</span></li>
+        <li><span>Uvítací kredit 100 € pre nových klientov na zriadenie od 290 € (Profi, automatizácie, weby, reporty), do 31. 12. 2026. <a href="/terms.html#kredit">Podmienky</a></span></li>
+      </ul>
+      <div class="pr-note">Nie sme platiteľom DPH — uvedené ceny sú konečné.</div>
+    </div>
+    <div class="price-cta">
+      <button class="btn-primary" onclick="scroll2('kontakt')">Bezplatná konzultácia</button>
+      <a class="btn-ghost" href="#kontakt">Pozrieť ukážku chatbota</a>
+    </div>
+    <div class="pricing-footnote">Ukážku chatbota pripravujeme individuálne na požiadanie — na vašom webe a vašich otázkach.</div>
+    <div class="pricing-footnote" style="margin-top:8px;color:var(--accent)">⚡ Doba nasadenia: Základ od 48 hodín — Štandard a Profi 3–7 dní podľa rozsahu.</div>
   </div>
 </section>
 
@@ -1159,8 +1188,8 @@ nav{top:38px !important}.hero{padding-top:160px !important}
     <div class="section-label">Otázky</div>
     <h2 class="section-title">Časté otázky o AI chatbotoch</h2>
     <div class="faq-list" id="faq-list">
-      <details class="faq-item" name="faq"><summary class="faq-q"><span>Ako dlho trvá nasadenie AI chatbota?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Lead Bot nasadíme do 48 hodín od prijatia podkladov. Qualification Bot a Booking Bot trvajú 3–7 dní podľa rozsahu. AI Front Desk sa navrhuje individuálne.</div></details>
-      <details class="faq-item" name="faq"><summary class="faq-q"><span>Koľko stojí AI chatbot pre firmy?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Ceny začínajú od 290 € setup (pilotná ponuka) + 49 € mesačne pre Lead Bot. Mesačný poplatok zahŕňa prevádzku, aktualizácie a podporu.</div></details>
+      <details class="faq-item" name="faq"><summary class="faq-q"><span>Ako dlho trvá nasadenie AI chatbota?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Balík Základ nasadíme do 48 hodín od prijatia podkladov. Štandard a Profi trvajú 3–7 dní podľa rozsahu. Riešenie na mieru sa navrhuje individuálne.</div></details>
+      <details class="faq-item" name="faq"><summary class="faq-q"><span>Koľko stojí AI chatbot pre firmy?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Základ stojí 90 € zriadenie + 29 € mesačne, Štandard 190 € + 69 € mesačne a Profi 290 € + 129 € mesačne. Paušál zahŕňa prevádzku, náklady na AI a hosting, podporu a drobné úpravy. Bez viazanosti, ročný paušál vopred = 2 mesiace zadarmo.</div></details>
       <details class="faq-item" name="faq"><summary class="faq-q"><span>Musím meniť svoj web pre nasadenie chatbota?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Nie. Chatbot sa pridá ako jednoduchý skript — jedna linka kódu. Žiadny redizajn, žiadne technické zásahy z vašej strany.</div></details>
       <details class="faq-item" name="faq"><summary class="faq-q"><span>Funguje AI chatbot aj bez CRM?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Áno. Základné nastavenie funguje s emailom a Google Sheets — nepotrebujete CRM. Napojenie na CRM je voliteľné rozšírenie.</div></details>
       <details class="faq-item" name="faq"><summary class="faq-q"><span>Čo ak nemám pripravené podklady?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Stačí link na váš web a zoznam 5–10 otázok ktoré zákazníci kladú najčastejšie. Štruktúru konverzácie, texty odpovedí a nastavenie riešime my.</div></details>

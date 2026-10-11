@@ -44,8 +44,11 @@
       "offers": [
         {"@type": "Offer", "name": "Úvodná konzultácia", "price": "0", "priceCurrency": "EUR", "description": "Bezplatná úvodná konzultácia"},
         {"@type": "Offer", "name": "AI & Automation audit", "priceCurrency": "EUR", "priceSpecification": {"@type": "PriceSpecification", "minPrice": "190", "priceCurrency": "EUR"}, "description": "Analýza procesov a používaných systémov realitnej kancelárie, od 190 €"},
-        {"@type": "Offer", "name": "Automatizácia procesu", "priceCurrency": "EUR", "priceSpecification": {"@type": "PriceSpecification", "minPrice": "290", "priceCurrency": "EUR"}, "description": "Návrh, nastavenie a otestovanie automatizácie jedného procesu, od 290 €"},
-        {"@type": "Offer", "name": "Ponuka pre členov Realitnej únie SR: 15 % zvýhodnenie + uvítací kredit 100 €", "description": "Na prvú implementáciu získate 15 % z cenníkovej ceny a navyše uvítací kredit 100 €. Výhody sa sčítavajú. 15 % zvýhodnenie platí jednorazovo na prvú implementáciu (automatizácia procesu alebo komplexné riešenie), raz na realitnú kanceláriu. Neplatí na audit, mesačné poplatky ani licencie tretích strán. Členstvo v Realitnej únii SR overíme pri konzultácii.", "url": "https://axiona-group.sk/terms.html#realitna-unia"}
+        {"@type": "Offer", "name": "Automatizácia procesu", "price": "290", "priceCurrency": "EUR", "priceSpecification": [{"@type": "UnitPriceSpecification", "name": "Zriadenie", "minPrice": "290", "priceCurrency": "EUR"}, {"@type": "UnitPriceSpecification", "name": "Mesačný paušál", "minPrice": "39", "priceCurrency": "EUR", "referenceQuantity": {"@type": "QuantitativeValue", "value": "1", "unitCode": "MON"}}], "description": "Návrh, nastavenie a otestovanie automatizácie jedného procesu, od 290 € zriadenie + od 39 €/mes."},
+        {"@type": "Offer", "name": "Balík Základ – členská cena zriadenia", "price": "76.50", "priceCurrency": "EUR", "description": "Kontaktný formulár + chatbot na časté otázky, kontakty do e-mailu. Cenníková cena zriadenia 90 €.", "priceSpecification": [{"@type": "UnitPriceSpecification", "name": "Zriadenie pre členov RÚ SR (−15 %)", "price": "76.50", "priceCurrency": "EUR"}, {"@type": "UnitPriceSpecification", "name": "Mesačný paušál (bez zľavy)", "price": "29", "priceCurrency": "EUR", "referenceQuantity": {"@type": "QuantitativeValue", "value": "1", "unitCode": "MON"}}]},
+        {"@type": "Offer", "name": "Balík Štandard – členská cena zriadenia", "price": "161.50", "priceCurrency": "EUR", "description": "Chatbot naučený na ponuky a služby kancelárie, okamžitá odpoveď 24/7, záznam dopytov do tabuľky. Cenníková cena zriadenia 190 €.", "priceSpecification": [{"@type": "UnitPriceSpecification", "name": "Zriadenie pre členov RÚ SR (−15 %)", "price": "161.50", "priceCurrency": "EUR"}, {"@type": "UnitPriceSpecification", "name": "Mesačný paušál (bez zľavy)", "price": "69", "priceCurrency": "EUR", "referenceQuantity": {"@type": "QuantitativeValue", "value": "1", "unitCode": "MON"}}]},
+        {"@type": "Offer", "name": "Balík Profi – členská cena zriadenia", "price": "246.50", "priceCurrency": "EUR", "description": "Štandard + CRM, automatické follow-upy a pripomienky, týždenný report. Cenníková cena zriadenia 290 €; s uvítacím kreditom 146,50 €.", "priceSpecification": [{"@type": "UnitPriceSpecification", "name": "Zriadenie pre členov RÚ SR (−15 %)", "price": "246.50", "priceCurrency": "EUR"}, {"@type": "UnitPriceSpecification", "name": "Mesačný paušál (bez zľavy)", "price": "129", "priceCurrency": "EUR", "referenceQuantity": {"@type": "QuantitativeValue", "value": "1", "unitCode": "MON"}}]},
+        {"@type": "Offer", "name": "Ponuka pre členov Realitnej únie SR: 15 % zvýhodnenie + uvítací kredit 100 €", "description": "Na zriadenie prvej implementácie získate 15 % z cenníkovej ceny a navyše uvítací kredit 100 €. Výhody sa sčítavajú. 15 % zvýhodnenie sa vzťahuje len na zriadenie – jednorazovo na prvú implementáciu (balík chatbota, automatizácia procesu alebo komplexné riešenie), raz na realitnú kanceláriu. Neplatí na mesačný paušál, audit ani licencie tretích strán. Členstvo v Realitnej únii SR overíme pri konzultácii.", "url": "https://axiona-group.sk/terms.html#realitna-unia"}
       ]
     },
     {
@@ -59,15 +62,15 @@
         {"@type": "Question", "name": "Čo potrebujete na začiatku?", "acceptedAnswer": {"@type": "Answer", "text": "Krátky popis súčasného procesu a informáciu o nástrojoch, ktoré používate – napríklad CRM, e-mail, formuláre na webe alebo tabuľky."}},
         {"@type": "Question", "name": "Ako dlho implementácia trvá?", "acceptedAnswer": {"@type": "Answer", "text": "Závisí od rozsahu. Termín stanovíme po analýze konkrétneho workflow a uvedieme ho v návrhu riešenia spolu s cenou."}},
         {"@type": "Question", "name": "Čo ak používame vlastný alebo špecifický systém?", "acceptedAnswer": {"@type": "Answer", "text": "Najprv preveríme jeho integračné možnosti a dostupné API alebo exporty. Podľa toho navrhneme, čo sa dá prepojiť a akým spôsobom."}},
-        {"@type": "Question", "name": "Ako funguje zvýhodnenie pre členov Realitnej únie SR?", "acceptedAnswer": {"@type": "Answer", "text": "Členovia Realitnej únie SR získajú základnú analýzu jedného vybraného procesu a 15 % zvýhodnenie z cenníkovej ceny prvej implementácie. Zvýhodnenie sa sčítava s uvítacím kreditom 100 € pre nových klientov – napríklad automatizácia za 290 € tak vyjde na 146,50 €. Neplatí na audit, mesačné poplatky ani licencie tretích strán. Členstvo overíme pri konzultácii."}}
+        {"@type": "Question", "name": "Ako funguje zvýhodnenie pre členov Realitnej únie SR?", "acceptedAnswer": {"@type": "Answer", "text": "Členovia Realitnej únie SR získajú základnú analýzu jedného vybraného procesu a 15 % zvýhodnenie z cenníkovej ceny zriadenia prvej implementácie. Zvýhodnenie sa sčítava s uvítacím kreditom 100 € pre nových klientov – napríklad zriadenie balíka Profi alebo automatizácie za 290 € tak vyjde na 146,50 € (+ paušál 129 €/mes. pri Profi, bez zľavy). Neplatí na mesačný paušál, audit ani licencie tretích strán. Členstvo overíme pri konzultácii."}}
       ]
     }
   ]
 }
 </script>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/site.css?v=20261010t">
-<link rel="stylesheet" href="/reality/reality.css?v=20261010t">
+<link rel="stylesheet" href="/site.css?v=20261011c">
+<link rel="stylesheet" href="/reality/reality.css?v=20261011c">
 <!-- Google Analytics: načíta sa až po súhlase s analytickými cookies (bez súhlasu žiadny request na Google) -->
 <script>window.axionaLoadGA=function(){if(window.__gaLoaded)return;window.__gaLoaded=true;window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag("consent","default",{analytics_storage:"granted",ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied"});gtag("js",new Date());gtag("config","G-TCK43PYDBN");var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-TCK43PYDBN";document.head.appendChild(s);};(function(){var c=(document.cookie.match(/(?:^|; )cookie_consent=([^;]*)/)||[])[1]||"";if(c==="all"||c.indexOf("analytics")!==-1)window.axionaLoadGA();})();</script>
 <link rel="stylesheet" href="/theme.css?v=3">
@@ -112,7 +115,7 @@ nav{top:38px !important}.hero{padding-top:160px !important}
       <ul aria-label="Výhody pre členov Realitnej únie SR">
         <li>Bezplatná analýza jedného procesu</li>
         <li>15 % zvýhodnenie + uvítací kredit 100 €</li>
-        <li>Automatizácia za 290 € → 146,50 €</li>
+        <li>Zriadenie Profi 290 € → 146,50 €</li>
       </ul>
       <a class="rl-hero-terms" href="/terms.html#realitna-unia">Podmienky ponuky</a>
     </div>
@@ -139,23 +142,24 @@ nav{top:38px !important}.hero{padding-top:160px !important}
         <p class="rl-offer-lead">Pre členov Realitnej únie SR sme pripravili rozšírený začiatok spolupráce – aby ste ešte pred rozhodnutím videli, kde má automatizácia vo vašej kancelárii zmysel.</p>
         <a class="btn-primary" href="#kontakt" data-track="realitna_unia" data-ru="1">Využiť ponuku pre členov</a>
         <div class="rl-offer-notes">
-          <p>15 % zvýhodnenie platí jednorazovo na prvú implementáciu (automatizácia procesu alebo komplexné riešenie), raz na realitnú kanceláriu. Neplatí na audit, mesačné poplatky ani licencie tretích strán. Členstvo v Realitnej únii SR overíme pri konzultácii. <a href="/terms.html#realitna-unia">Podmienky ponuky</a></p>
+          <p>15 % zvýhodnenie sa vzťahuje len na zriadenie – jednorazovo na prvú implementáciu (balík chatbota, automatizácia procesu alebo komplexné riešenie), raz na realitnú kanceláriu. Neplatí na mesačný paušál, audit ani licencie tretích strán. Členstvo v Realitnej únii SR overíme pri konzultácii. <a href="/terms.html#realitna-unia">Podmienky ponuky</a></p>
         </div>
       </div>
       <div>
         <ul class="rl-offer-benefits">
           <li><strong>Bezplatná 30-minútová AI &amp; Automation konzultácia</strong><span>Úvodná konzultácia je u nás bezplatná pre každého klienta – pre členov RÚ ju zameriame priamo na procesy realitnej kancelárie.</span></li>
           <li><strong>Základná analýza jedného vybraného procesu</strong><span>Vyberiete jeden proces, ktorý vám berie najviac času. Prejdeme ho počas úvodnej konzultácie a pošleme vám stručné písomné zhrnutie, ktoré kroky sa dajú zjednodušiť alebo automatizovať.</span></li>
-          <li><strong>15 % zvýhodnenie + uvítací kredit 100 €</strong><span>Na prvú implementáciu získate 15 % z cenníkovej ceny a navyše uvítací kredit 100 €. Výhody sa sčítavajú.</span></li>
+          <li><strong>15 % zvýhodnenie + uvítací kredit 100 €</strong><span>Na zriadenie prvej implementácie získate 15 % z cenníkovej ceny a navyše uvítací kredit 100 €. Výhody sa sčítavajú. Mesačný paušál je bez zľavy.</span></li>
         </ul>
         <figure class="rl-calc">
-          <figcaption class="rl-calc-title">Príklad: automatizácia procesu za 290 €</figcaption>
+          <figcaption class="rl-calc-title">Príklad: zriadenie balíka Profi za 290 €</figcaption>
           <dl class="rl-calc-list">
             <div><dt>− 15 % zvýhodnenie:</dt><dd>43,50 €</dd></div>
             <div><dt>− uvítací kredit:</dt><dd>100 €</dd></div>
             <div class="rl-calc-total"><dt><span aria-hidden="true">=</span><span class="rl-sr">Výsledná cena</span></dt><dd>146,50 €</dd></div>
           </dl>
-          <p class="rl-calc-note">Pri objednávke do 31. 12. 2026. Uvítací kredit platí pre nových klientov pri objednávke od 290 €. Nie sme platiteľom DPH, DPH sa nepripočítava.</p>
+          <p class="rl-calc-note">+ mesačný paušál 129 € (bez zľavy). Rovnako vychádza automatizácia procesu za 290 €.</p>
+          <p class="rl-calc-note">Pri objednávke do 31. 12. 2026. Uvítací kredit platí pre nových klientov pri zriadení od 290 €. Nie sme platiteľom DPH, DPH sa nepripočítava.</p>
         </figure>
       </div>
     </div>
@@ -340,9 +344,24 @@ nav{top:38px !important}.hero{padding-top:160px !important}
         <div class="rl-price-amount"><small>od</small>190 €</div>
       </div>
       <div class="rl-price-row">
+        <h3 class="rl-price-name">Balík Základ</h3>
+        <p class="rl-price-desc">Kontaktný formulár + chatbot na časté otázky, kontakty do e-mailu. Členská cena zriadenia (−15 %).</p>
+        <div class="rl-price-amount">76,50 €<span class="rl-price-sub"><s>90 €</s> · + 29 €/mes.</span></div>
+      </div>
+      <div class="rl-price-row">
+        <h3 class="rl-price-name">Balík Štandard</h3>
+        <p class="rl-price-desc">Chatbot naučený na vaše ponuky a služby, okamžitá odpoveď 24/7, záznam dopytov do tabuľky. Členská cena zriadenia (−15 %).</p>
+        <div class="rl-price-amount">161,50 €<span class="rl-price-sub"><s>190 €</s> · + 69 €/mes.</span></div>
+      </div>
+      <div class="rl-price-row">
+        <h3 class="rl-price-name">Balík Profi</h3>
+        <p class="rl-price-desc">Štandard + CRM, automatické follow-upy a pripomienky, týždenný report. Členská cena zriadenia (−15 %); s uvítacím kreditom <strong>146,50 €</strong> + 129 €/mes.</p>
+        <div class="rl-price-amount">246,50 €<span class="rl-price-sub"><s>290 €</s> · + 129 €/mes.</span></div>
+      </div>
+      <div class="rl-price-row">
         <h3 class="rl-price-name">Automatizácia procesu</h3>
-        <p class="rl-price-desc">Návrh, nastavenie, otestovanie a nasadenie automatizácie jedného procesu.</p>
-        <div class="rl-price-amount"><small>od</small>290 €</div>
+        <p class="rl-price-desc">Návrh, nastavenie, otestovanie a nasadenie automatizácie jedného procesu. Paušál pokrýva prevádzku, monitoring a úpravy.</p>
+        <div class="rl-price-amount"><small>od</small>290 €<span class="rl-price-sub">+ od 39 €/mes.</span></div>
       </div>
       <div class="rl-price-row">
         <h3 class="rl-price-name">Komplexné riešenia</h3>
@@ -352,8 +371,19 @@ nav{top:38px !important}.hero{padding-top:160px !important}
     </div>
     <div class="rl-price-foot">
       <p>Konečná cena závisí od rozsahu procesu, počtu integrácií a používaných systémov. Pred realizáciou vždy dostanete návrh riešenia a cenu.</p>
-      <p><strong>Uvítací kredit pre nových klientov:</strong> odpočítame 100 € z vašej prvej objednávky od 290 €. Platí do 31. 12. 2026. <a href="/terms.html#kredit">Podmienky</a></p>
-      <p class="rl-small">Nie sme platiteľom DPH, k uvedeným cenám sa DPH nepripočítava. Členovia Realitnej únie SR majú na prvú implementáciu 15 % zvýhodnenie, ktoré sa sčítava s uvítacím kreditom 100 €.</p>
+      <p><strong>Uvítací kredit pre nových klientov:</strong> odpočítame 100 € zo zriadenia od 290 € (Profi, automatizácie, weby, reporty). Platí do 31. 12. 2026. <a href="/terms.html#kredit">Podmienky</a></p>
+      <p class="rl-small">Nie sme platiteľom DPH, k uvedeným cenám sa DPH nepripočítava. Členovia Realitnej únie SR majú 15 % zvýhodnenie na zriadenie prvej implementácie (jednorazovo na kanceláriu), ktoré sa sčítava s uvítacím kreditom 100 €. Zvýhodnenie neplatí na mesačný paušál, audit ani licencie tretích strán.</p>
+    </div>
+    <div class="price-rules">
+      <div class="pr-title">Ako funguje platba</div>
+      <ul>
+        <li><span><strong>Zriadenie</strong> sa platí jednorazovo pred spustením, <strong>paušál</strong> mesačne vopred.</span></li>
+        <li><span>Bez viazanosti — službu zrušíte kedykoľvek ku koncu zaplateného mesiaca. Pri neuhradení sa služba pozastaví.</span></li>
+        <li><span>Paušál zahŕňa prevádzku, náklady na AI a hosting, podporu a drobné úpravy — žiadne skryté poplatky.</span></li>
+        <li><span>Ročný paušál zaplatený vopred = 2 mesiace zadarmo.</span></li>
+        <li><span>Uvítací kredit 100 € pre nových klientov na zriadenie od 290 € (Profi, automatizácie, weby, reporty), do 31. 12. 2026. <a href="/terms.html#kredit">Podmienky</a></span></li>
+      </ul>
+      <div class="pr-note">Nie sme platiteľom DPH — uvedené ceny sú konečné.</div>
     </div>
     <div class="rl-price-cta"><a class="btn-primary" href="#kontakt" data-track="pricing">Začať bezplatnou konzultáciou</a></div>
   </div>
@@ -372,7 +402,7 @@ nav{top:38px !important}.hero{padding-top:160px !important}
       <details class="faq-item" name="faq"><summary class="faq-q"><span>Čo potrebujete na začiatku?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Krátky popis súčasného procesu a informáciu o nástrojoch, ktoré používate – napríklad CRM, e-mail, formuláre na webe alebo tabuľky.</div></details>
       <details class="faq-item" name="faq"><summary class="faq-q"><span>Ako dlho implementácia trvá?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Závisí od rozsahu. Termín stanovíme po analýze konkrétneho workflow a uvedieme ho v návrhu riešenia spolu s cenou.</div></details>
       <details class="faq-item" name="faq"><summary class="faq-q"><span>Čo ak používame vlastný alebo špecifický systém?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Najprv preveríme jeho integračné možnosti a dostupné API alebo exporty. Podľa toho navrhneme, čo sa dá prepojiť a akým spôsobom.</div></details>
-      <details class="faq-item" name="faq"><summary class="faq-q"><span>Ako funguje zvýhodnenie pre členov Realitnej únie SR?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Členovia Realitnej únie SR získajú základnú analýzu jedného vybraného procesu a 15 % zvýhodnenie z cenníkovej ceny prvej implementácie. Zvýhodnenie sa sčítava s uvítacím kreditom 100 € pre nových klientov – napríklad automatizácia za 290 € tak vyjde na 146,50 €. Neplatí na audit, mesačné poplatky ani licencie tretích strán. Členstvo overíme pri konzultácii.</div></details>
+      <details class="faq-item" name="faq"><summary class="faq-q"><span>Ako funguje zvýhodnenie pre členov Realitnej únie SR?</span><span class="faq-arrow" aria-hidden="true">+</span></summary><div class="faq-a">Členovia Realitnej únie SR získajú základnú analýzu jedného vybraného procesu a 15 % zvýhodnenie z cenníkovej ceny zriadenia prvej implementácie. Zvýhodnenie sa sčítava s uvítacím kreditom 100 € pre nových klientov – napríklad zriadenie balíka Profi alebo automatizácie za 290 € tak vyjde na 146,50 € (+ paušál 129 €/mes. pri Profi, bez zľavy). Neplatí na mesačný paušál, audit ani licencie tretích strán. Členstvo overíme pri konzultácii.</div></details>
     </div>
   </div>
 </section>

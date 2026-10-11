@@ -131,6 +131,8 @@
 .rl-price-desc{font-size:13.5px;color:var(--muted2);line-height:1.6}
 .rl-price-amount{font-family:'Playfair Display',serif;font-size:26px;color:var(--accent);white-space:nowrap;text-align:right}
 .rl-price-amount small{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);margin-right:4px}
+.rl-price-sub{display:block;font-family:'DM Sans',sans-serif;font-size:12.5px;color:var(--muted);margin-top:4px}
+.rl-price-sub s{opacity:.8}
 .rl-price-foot{margin-top:22px;display:flex;flex-direction:column;gap:8px;text-align:center}
 .rl-price-foot p{font-size:13px;color:var(--muted2);line-height:1.65}
 .rl-price-foot .rl-small{font-size:12.5px;color:var(--muted);font-style:italic}
