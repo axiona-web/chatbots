@@ -137,7 +137,8 @@
 .rl-price-foot p{font-size:13px;color:var(--muted2);line-height:1.65}
 .rl-price-foot .rl-small{font-size:12.5px;color:var(--muted);font-style:italic}
 .rl-price-foot a{color:var(--accent)}
-.rl-price-cta{text-align:center;margin-top:28px}
+.rl-price-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
+@media(max-width:480px){.rl-price-cta>*{flex:1 1 100%;text-align:center}}
 @media(max-width:768px){
   .rl-price-row{grid-template-columns:1fr auto;gap:8px 16px;padding:20px}
   .rl-price-desc{grid-column:1/-1;grid-row:2}
