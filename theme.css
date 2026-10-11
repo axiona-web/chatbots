@@ -24,8 +24,10 @@ nav .nav-end .nav-cta{margin:0}
 
 /* logo: tmavý obrázok v tmavom motíve, kreslené logo vo svetlom */
 /* rozmery = logo-web.png (406×123): rovnaká šírka a poloha značky aj textu, aby sa pri prepnutí motívu nič neposunulo */
-.logo-light{display:none;align-items:center;gap:calc(var(--h) * .2);height:var(--h);width:calc(var(--h) * 406 / 123);flex:none;box-sizing:border-box;padding-top:calc(var(--h) * .04);text-decoration:none}
-.logo-light svg{height:calc(var(--h) * .9);width:auto;flex:none;margin-top:calc(var(--h) * -.04)}
+.logo-light{display:none;align-items:center;gap:calc(var(--h) * 13 / 123);height:var(--h);width:calc(var(--h) * 406 / 123);flex:none;text-decoration:none}
+/* značka v súradniciach logo-web.png (viewBox 196×123 = ľavá časť obrázka), preto výška = --h bez deformácie */
+.logo-light svg{height:var(--h);width:auto;flex:none}
+.logo-light > span{margin-top:calc(var(--h) * .09)}
 .logo-light .w{display:block;font-family:'Playfair Display',serif;font-size:calc(var(--h) * .44);line-height:1;color:var(--text)}
 .logo-light .g{display:block;font-family:'DM Sans',sans-serif;font-size:calc(var(--h) * .15);letter-spacing:.55em;color:var(--accent);font-weight:500;margin-top:calc(var(--h) * .07)}
 .logo-light .mk-l line{stroke:var(--accent);stroke-opacity:.55;stroke-width:1.6}
