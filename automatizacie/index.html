@@ -2,7 +2,7 @@
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
-<script>try{document.documentElement.dataset.theme=localStorage.getItem("axiona-theme")==="light"?"light":"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("axiona-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <title>Automatizácia firemných procesov | Axiona Group</title>
@@ -50,10 +50,10 @@
 }
 </script>
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/site.css?v=20261011c">
+<link rel="stylesheet" href="/site.css?v=20261013">
 <!-- Google Analytics: načíta sa až po súhlase s analytickými cookies (bez súhlasu žiadny request na Google) -->
 <script>window.axionaLoadGA=function(){if(window.__gaLoaded)return;window.__gaLoaded=true;window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag("consent","default",{analytics_storage:"granted",ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied"});gtag("js",new Date());gtag("config","G-TCK43PYDBN");var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-TCK43PYDBN";document.head.appendChild(s);};(function(){var c=(document.cookie.match(/(?:^|; )cookie_consent=([^;]*)/)||[])[1]||"";if(c==="all"||c.indexOf("analytics")!==-1)window.axionaLoadGA();})();</script>
-<link rel="stylesheet" href="/theme.css?v=3">
+<link rel="stylesheet" href="/theme.css?v=4">
 <script src="/theme.js?v=1" defer></script>
 </head>
 <body>
@@ -71,7 +71,7 @@ nav{top:38px !important}.hero{padding-top:160px !important}
   <div class="nav-links">
     <a href="/ai-chatboty/">AI chatboty</a>
     <a href="/weby/">Weby</a>
-    <a href="/automatizacie/" style="color:var(--accent)">Automatizácie</a>
+    <a href="/automatizacie/" style="color:var(--accent-text,var(--accent))">Automatizácie</a>
     <a href="/data-reporty/">Dáta &amp; reporty</a>
     <a href="/audity/">Audit webu</a>
     <a href="/reality/">Realitná únia SR</a>
@@ -285,7 +285,7 @@ nav{top:38px !important}.hero{padding-top:160px !important}
 
 <div id="cookie-banner">
   <div class="cookie-text">Táto stránka používa cookies na zabezpečenie základnej funkčnosti a analýzu návštevnosti.
-    <a href="/cookies.html" style="color:var(--accent);text-decoration:none"> Viac informácií</a></div>
+    <a href="/cookies.html" style="color:var(--accent-text,var(--accent));text-decoration:none"> Viac informácií</a></div>
   <div class="cookie-btns">
     <button class="cookie-btn-reject" onclick="rejectCookies()">Len nevyhnutné</button>
     <button class="cookie-btn-settings" onclick="window.location.href='/cookies.html'">Nastavenia</button>

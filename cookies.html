@@ -2,7 +2,7 @@
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
-<script>try{document.documentElement.dataset.theme=localStorage.getItem("axiona-theme")==="light"?"light":"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("axiona-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cookies — Axiona Group s. r. o.</title>
 <link rel="stylesheet" href="/fonts/fonts.css">
@@ -12,9 +12,9 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--dark);color:var(--text);line-height:1.7;padding:0}
 nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Playfair Display',serif;font-size:19px;color:var(--accent)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:19px;color:var(--accent-text,var(--accent))}
 .nav-back{font-size:13px;color:var(--muted2);text-decoration:none;transition:color .2s}
-.nav-back:hover{color:var(--accent)}
+.nav-back:hover{color:var(--accent-text,var(--accent))}
 .container{max-width:760px;margin:0 auto;padding:60px 24px 80px}
 h1{font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:var(--text);margin-bottom:8px}
 .meta{font-size:13px;color:var(--muted);margin-bottom:48px}
@@ -26,12 +26,12 @@ table{width:100%;border-collapse:collapse;margin-bottom:24px}
 table th{font-size:13px;font-weight:500;color:var(--text);text-align:left;padding:10px 14px;background:rgba(var(--gold-rgb),.08);border:1px solid var(--border)}
 table td{font-size:13px;color:var(--muted2);padding:10px 14px;border:1px solid var(--border);vertical-align:top}
 @media(max-width:600px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}table th,table td{padding:8px 10px;font-size:12px}}
-a{color:var(--accent);text-decoration:none}
+a{color:var(--accent-text,var(--accent));text-decoration:none}
 a:hover{text-decoration:underline}
 .highlight{background:rgba(var(--gold-rgb),.07);border-left:3px solid var(--accent);padding:16px 20px;border-radius:0 8px 8px 0;margin-bottom:24px;font-size:14px;color:var(--muted2)}
 footer-note{display:block;font-size:12px;color:var(--muted);margin-top:60px;padding-top:24px;border-top:1px solid var(--border)}
 </style>
-<link rel="stylesheet" href="/theme.css?v=3">
+<link rel="stylesheet" href="/theme.css?v=4">
 <script src="/theme.js?v=1" defer></script>
 </head>
 <body>

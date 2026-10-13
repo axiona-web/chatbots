@@ -2,7 +2,7 @@
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
-<script>try{document.documentElement.dataset.theme=localStorage.getItem("axiona-theme")==="light"?"light":"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("axiona-theme")==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <title>Axiona Group | Digitálny partner pre malé a stredné firmy</title>
@@ -83,11 +83,11 @@
 </script>
 
 <link rel="stylesheet" href="/fonts/fonts.css">
-<link rel="stylesheet" href="/site.css?v=20261011c">
+<link rel="stylesheet" href="/site.css?v=20261013">
 
 <!-- Google Analytics: načíta sa až po súhlase s analytickými cookies (bez súhlasu žiadny request na Google) -->
 <script>window.axionaLoadGA=function(){if(window.__gaLoaded)return;window.__gaLoaded=true;window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag("consent","default",{analytics_storage:"granted",ad_storage:"denied",ad_user_data:"denied",ad_personalization:"denied"});gtag("js",new Date());gtag("config","G-TCK43PYDBN");var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id=G-TCK43PYDBN";document.head.appendChild(s);};(function(){var c=(document.cookie.match(/(?:^|; )cookie_consent=([^;]*)/)||[])[1]||"";if(c==="all"||c.indexOf("analytics")!==-1)window.axionaLoadGA();})();</script>
-<link rel="stylesheet" href="/theme.css?v=3">
+<link rel="stylesheet" href="/theme.css?v=4">
 <script src="/theme.js?v=1" defer></script>
 </head>
 <body>
@@ -128,9 +128,9 @@ nav{top:38px !important}.hero{padding-top:160px !important}
       <button class="btn-ghost" onclick="scroll2('sluzby')">Pozrieť služby</button>
     </div>
     <div id="uvitaci-kredit" style="display:flex;align-items:center;gap:22px;margin:30px auto 0;padding:18px 26px;border:2px solid var(--accent);border-radius:16px;background:linear-gradient(135deg,rgba(var(--gold-rgb),.18),rgba(var(--gold-rgb),.05));max-width:620px;text-align:left;box-shadow:0 10px 40px rgba(var(--gold-rgb),.15)">
-      <div style="font-family:'Playfair Display',serif;font-size:52px;line-height:1;color:var(--accent);white-space:nowrap">100 €</div>
+      <div style="font-family:'Playfair Display',serif;font-size:52px;line-height:1;color:var(--accent-text,var(--accent));white-space:nowrap">100 €</div>
       <div style="font-size:14.5px;line-height:1.5">
-        <div style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:4px">Uvítací kredit pre nových klientov</div>
+        <div style="font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-text,var(--accent));margin-bottom:4px">Uvítací kredit pre nových klientov</div>
         <strong>Odpočítame 100 € zo zriadenia</strong> od 290 € — chatbot Profi, automatizácia, web, reporty. Platí do 31. 12. 2026.
         <div style="margin-top:8px"><a onclick="scroll2('kontakt')" style="display:inline-block;background:var(--accent);color:#15130f;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;text-decoration:none">Chcem kredit →</a>
         <a href="/terms.html#kredit" style="font-size:12px;opacity:.7;color:inherit;margin-left:10px">Podmienky</a></div>
@@ -317,7 +317,7 @@ nav{top:38px !important}.hero{padding-top:160px !important}
 <div id="cookie-banner">
   <div class="cookie-text">
     Táto stránka používa cookies na zabezpečenie základnej funkčnosti a analýzu návštevnosti.
-    <a href="/cookies.html" style="color:var(--accent);text-decoration:none"> Viac informácií</a>
+    <a href="/cookies.html" style="color:var(--accent-text,var(--accent));text-decoration:none"> Viac informácií</a>
   </div>
   <div class="cookie-btns">
     <button class="cookie-btn-reject" onclick="rejectCookies()">Len nevyhnutné</button>

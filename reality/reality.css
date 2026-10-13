@@ -25,7 +25,7 @@
   background-size:300% 100%;background-position:100% 0;animation:rlFlowX 5s linear infinite}
 @keyframes rlFlowX{from{background-position:100% 0}to{background-position:0 0}}
 .rl-node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 6px;counter-increment:rl}
-.rl-node-dot{width:44px;height:44px;border-radius:50%;border:1px solid var(--accent);background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:500;color:var(--accent);letter-spacing:.5px;margin-bottom:14px}
+.rl-node-dot{width:44px;height:44px;border-radius:50%;border:1px solid var(--accent);background:var(--dark);display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:500;color:var(--accent-text,var(--accent));letter-spacing:.5px;margin-bottom:14px}
 .rl-node-dot::before{content:'0' counter(rl)}
 .rl-node:first-child .rl-node-dot,.rl-node:last-child .rl-node-dot{background:var(--accent);color:#1a1108}
 .rl-node-title{font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text);margin-bottom:6px;line-height:1.35}
@@ -51,7 +51,7 @@
 @media(max-width:480px){.rl-problem-grid{grid-template-columns:1fr}}
 
 /* ČO AUTOMATIZUJEME */
-.rl-num{font-size:12px;letter-spacing:1.5px;color:var(--accent);margin-bottom:14px;font-weight:500}
+.rl-num{font-size:12px;letter-spacing:1.5px;color:var(--accent-text,var(--accent));margin-bottom:14px;font-weight:500}
 .rl-page .deliverable-card .del-title{text-transform:uppercase;letter-spacing:1px;font-size:13px}
 .rl-page .del-desc{font-size:13px}
 .rl-page .deliverables-note p{font-style:normal}
@@ -61,7 +61,7 @@
 .rl-ba-col{padding:28px 26px;border:1px solid var(--border2);border-radius:14px;background:var(--dark2)}
 .rl-ba-col.after{border-color:rgba(var(--gold-rgb),.4);background:rgba(var(--gold-rgb),.04)}
 .rl-ba-label{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
-.rl-ba-col.after .rl-ba-label{color:var(--accent)}
+.rl-ba-col.after .rl-ba-label{color:var(--accent-text,var(--accent))}
 .rl-ba-steps{list-style:none;display:flex;flex-direction:column}
 .rl-ba-steps li{position:relative;padding:0 0 18px 26px;font-size:14px;color:var(--muted2);line-height:1.5}
 .rl-ba-steps li:last-child{padding-bottom:0}
@@ -90,10 +90,10 @@
 .rl-calc-list > div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:6px 0;font-size:14px;color:var(--muted2);font-variant-numeric:tabular-nums}
 .rl-calc-list dt,.rl-calc-list dd{margin:0}
 .rl-calc-list dd{white-space:nowrap;text-align:right}
-.rl-calc-list .rl-calc-total{margin-top:6px;padding-top:10px;border-top:1px solid rgba(var(--gold-rgb),.35);color:var(--accent);font-weight:500;font-size:15.5px}
+.rl-calc-list .rl-calc-total{margin-top:6px;padding-top:10px;border-top:1px solid rgba(var(--gold-rgb),.35);color:var(--accent-text,var(--accent));font-weight:500;font-size:15.5px}
 .rl-calc-note{margin-top:10px;font-size:12px;color:var(--muted);line-height:1.55}
 .rl-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.rl-offer-notes a{color:var(--accent);white-space:nowrap}
+.rl-offer-notes a{color:var(--accent-text,var(--accent));white-space:nowrap}
 .rl-offer-notes{margin-top:18px;display:flex;flex-direction:column;gap:6px}
 .rl-offer-notes p{font-size:12.5px;color:var(--muted);line-height:1.6}
 .rl-offer .btn-primary{margin-top:6px}
@@ -102,7 +102,7 @@
 /* PRÍKLADY AUTOMATIZÁCIÍ */
 .rl-uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
 .rl-uc{padding:28px 24px;border:1px solid var(--border2);border-radius:14px;background:var(--dark2);display:flex;flex-direction:column}
-.rl-uc-num{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.rl-uc-num{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-text,var(--accent));margin-bottom:12px}
 .rl-uc-title{font-family:'Playfair Display',serif;font-size:19px;font-weight:400;color:var(--text);line-height:1.35;margin-bottom:20px}
 .rl-chain{list-style:none;display:flex;flex-direction:column;gap:0;margin-bottom:20px;flex:1}
 .rl-chain li{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted2);padding:9px 12px;border:1px solid var(--border2);border-radius:8px;background:rgba(var(--ink-rgb),.02)}
@@ -111,7 +111,7 @@
 .rl-chain li.human{border-color:rgba(var(--gold-rgb),.45);color:var(--text)}
 .rl-chain-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-left:3px}
 .rl-chain li.human .rl-chain-dot{background:transparent;border:1.5px solid var(--accent)}
-.rl-tag{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.rl-tag{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font-size:10.5px;letter-spacing:.8px;text-transform:uppercase;color:var(--accent-text,var(--accent));white-space:nowrap}
 .rl-uc-foot{font-size:12.5px;color:var(--muted);line-height:1.6;padding-top:16px;border-top:1px solid var(--border2)}
 .rl-legend{display:flex;gap:22px;flex-wrap:wrap;margin-top:22px;font-size:12.5px;color:var(--muted)}
 .rl-legend span{display:inline-flex;align-items:center;gap:8px}
@@ -129,14 +129,14 @@
 .rl-price-row.first{background:rgba(var(--gold-rgb),.05)}
 .rl-price-name{font-size:13px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text)}
 .rl-price-desc{font-size:13.5px;color:var(--muted2);line-height:1.6}
-.rl-price-amount{font-family:'Playfair Display',serif;font-size:26px;color:var(--accent);white-space:nowrap;text-align:right}
+.rl-price-amount{font-family:'Playfair Display',serif;font-size:26px;color:var(--accent-text,var(--accent));white-space:nowrap;text-align:right}
 .rl-price-amount small{font-family:'DM Sans',sans-serif;font-size:13px;color:var(--muted);margin-right:4px}
 .rl-price-sub{display:block;font-family:'DM Sans',sans-serif;font-size:12.5px;color:var(--muted);margin-top:4px}
 .rl-price-sub s{opacity:.8}
 .rl-price-foot{margin-top:22px;display:flex;flex-direction:column;gap:8px;text-align:center}
 .rl-price-foot p{font-size:13px;color:var(--muted2);line-height:1.65}
 .rl-price-foot .rl-small{font-size:12.5px;color:var(--muted);font-style:italic}
-.rl-price-foot a{color:var(--accent)}
+.rl-price-foot a{color:var(--accent-text,var(--accent))}
 .rl-price-cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
 @media(max-width:480px){.rl-price-cta>*{flex:1 1 100%;text-align:center}}
 @media(max-width:768px){
@@ -163,7 +163,7 @@
 .rl-check input{width:17px;height:17px;margin-top:1px;accent-color:var(--accent);flex-shrink:0;cursor:pointer}
 .rl-form-error{display:none;padding:12px 14px;border:1px solid rgba(224,85,85,.4);background:rgba(224,85,85,.08);border-radius:8px;font-size:13px;color:#f3a0a0;line-height:1.55}
 .rl-form-error.show{display:block}
-.rl-form-error a{color:var(--accent)}
+.rl-form-error a{color:var(--accent-text,var(--accent))}
 .rl-page .form-submit:disabled{opacity:.6;cursor:wait}
 .rl-page .form-success:focus{outline:none}
 
@@ -193,9 +193,9 @@
 .rl-hero-offer{max-width:470px;margin:-8px auto 30px;padding:16px 22px 14px;border:1px solid rgba(var(--gold-rgb),.4);border-radius:12px;background:rgba(var(--gold-rgb),.07);text-align:left}
 .rl-hero-offer ul{list-style:none;display:flex;flex-direction:column;gap:7px}
 .rl-hero-offer li{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:500;color:var(--text);line-height:1.45}
-.rl-hero-offer li::before{content:'✓';color:var(--accent);flex-shrink:0}
+.rl-hero-offer li::before{content:'✓';color:var(--accent-text,var(--accent));flex-shrink:0}
 .rl-hero-terms{display:inline-block;margin-top:10px;font-size:12px;color:var(--muted2);text-decoration:underline;text-underline-offset:2px}
-.rl-hero-terms:hover{color:var(--accent)}
+.rl-hero-terms:hover{color:var(--accent-text,var(--accent))}
 
 /* SEKCIA RÚ — najvýraznejšia sekcia stránky */
 .rl-ru-section{background:rgba(var(--gold-rgb),.04);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}

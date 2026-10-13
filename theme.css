@@ -1,14 +1,21 @@
-/* Svetlý / tmavý motív (2026-10). Predvolený je tmavý — pôvodný vzhľad webu; voľba sa pamätá v prehliadači.
-   Farby stránok sú premenné (site.css :root), tu sa len prepíšu pre svetlý motív. */
+/* Svetlý / tmavý motív (2026-10). Predvolený je svetlý (od 13. 10. 2026); tmavý len ak si ho návštevník zvolil
+   (localStorage „axiona-theme“ = „dark“). Farby stránok sú premenné (site.css :root), tu sa len prepíšu pre svetlý motív.
+   --accent-text = zlatá pre text (kontrast ≥ 4,5:1 aj na --dark3); --accent ostáva pre pozadia, okraje a logo. V tmavom
+   motíve --accent-text nie je definovaná a text použije --accent (var(--accent-text,var(--accent))). */
 :root[data-theme=light]{
   --dark:#ffffff;--dark2:#f7f6f2;--dark3:#efebe3;
   --text:#16161b;--muted:#6b665d;--muted2:#4a463f;
-  --accent:#a27c48;--accent-light:rgba(162,124,72,.12);
+  --accent:#a27c48;--accent-text:#7d5d32;--accent-light:rgba(162,124,72,.12);
   --border:rgba(162,124,72,.28);--border2:rgba(22,22,27,.1);
   --ink-rgb:22,22,27;--gold-rgb:162,124,72;--bg-rgb:255,255,255;
   color-scheme:light;
 }
 :root[data-theme=light] .form-success{color:#1f7a50}
+/* stavové farby navrhnuté na tmavé pozadie — vo svetlom motíve tmavšie (kontrast ≥ 4,5:1) */
+:root[data-theme=light] .comparison-table .good,:root[data-theme=light] .proof-sheet-cell.hot,
+:root[data-theme=light] .proof-email-val[style*="#2d9e6b"]{color:#1f7a50 !important}
+:root[data-theme=light] .proof-sheet-cell.header{color:var(--muted2)}
+:root[data-theme=light] .comparison-table .bad,:root[data-theme=light] .rl-err,:root[data-theme=light] .rl-form-error{color:#b42318}
 
 /* pravá časť menu: CTA + prepínač + hamburger */
 .nav-end{display:flex;align-items:center;gap:12px}
@@ -29,7 +36,7 @@ nav .nav-end .nav-cta{margin:0}
 .logo-light svg{height:var(--h);width:auto;flex:none}
 .logo-light > span{margin-top:calc(var(--h) * .09)}
 .logo-light .w{display:block;font-family:'Playfair Display',serif;font-size:calc(var(--h) * .44);line-height:1;color:var(--text)}
-.logo-light .g{display:block;font-family:'DM Sans',sans-serif;font-size:calc(var(--h) * .15);letter-spacing:.55em;color:var(--accent);font-weight:500;margin-top:calc(var(--h) * .07)}
+.logo-light .g{display:block;font-family:'DM Sans',sans-serif;font-size:calc(var(--h) * .15);letter-spacing:.55em;color:var(--accent-text,var(--accent));font-weight:500;margin-top:calc(var(--h) * .07)}
 .logo-light .mk-l line{stroke:var(--accent);stroke-opacity:.55;stroke-width:1.6}
 .logo-light .mk-a{stroke:var(--accent);stroke-width:2}
 .logo-light .mk-o{fill:var(--dark);stroke:var(--text);stroke-opacity:.75;stroke-width:2}
