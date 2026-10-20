@@ -40,14 +40,25 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": [
+        "Organization",
+        "ProfessionalService"
+      ],
       "@id": "https://axiona-group.sk/#organization",
       "name": "Axiona Group s. r. o.",
+      "alternateName": "Axiona",
       "url": "https://axiona-group.sk",
-      "taxID": "2122102708",
       "logo": "https://axiona-group.sk/logo-web.png",
+      "image": "https://axiona-group.sk/og-image.png",
+      "description": "AI automatizácia, chatboty a dátové reporty pre slovenské malé a stredné firmy.",
       "email": "office@axiona-group.sk",
       "telephone": "+421 902 087 495",
+      "taxID": "2122102708",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "IČO",
+        "value": "55815600"
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Za Kaštieľom 1308/2",
@@ -55,8 +66,80 @@
         "postalCode": "053 11",
         "addressCountry": "SK"
       },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Košický kraj"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Prešovský kraj"
+        },
+        {
+          "@type": "Country",
+          "name": "Slovensko"
+        }
+      ],
       "hasMap": "https://maps.app.goo.gl/uPTD1QJCjpFjE15SA",
-      "sameAs": ["https://maps.app.goo.gl/uPTD1QJCjpFjE15SA"]
+      "sameAs": [
+        "https://www.google.com/maps?cid=16380874628328203923",
+        "https://www.orsr.sk/vypis.asp?ID=674657&SID=4&P=0"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "@id": "https://axiona-group.sk/#services",
+        "name": "Služby Axiona Group",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI chatboty pre firmy",
+              "url": "https://axiona-group.sk/ai-chatboty/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Tvorba webov a landing pages",
+              "url": "https://axiona-group.sk/weby/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Automatizácie firemných procesov",
+              "url": "https://axiona-group.sk/automatizacie/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Dáta, dashboardy a reporty",
+              "url": "https://axiona-group.sk/data-reporty/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Audit webu a e-shopu",
+              "url": "https://axiona-group.sk/audity/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI a automatizácia pre realitné kancelárie",
+              "url": "https://axiona-group.sk/reality/"
+            }
+          }
+        ]
+      }
     },
     {
       "@type": "WebSite",
@@ -64,19 +147,10 @@
       "url": "https://axiona-group.sk",
       "name": "Axiona Group — digitálny partner pre firmy",
       "description": "AI chatboty, tvorba webov, automatizácie procesov a dátové reporty pre malé a stredné firmy.",
-      "publisher": {"@id": "https://axiona-group.sk/#organization"},
+      "publisher": {
+        "@id": "https://axiona-group.sk/#organization"
+      },
       "inLanguage": "sk-SK"
-    },
-    {
-      "@type": "ItemList",
-      "@id": "https://axiona-group.sk/#services",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "AI chatboty pre firmy", "url": "https://axiona-group.sk/ai-chatboty/"},
-        {"@type": "ListItem", "position": 2, "name": "Tvorba webov a landing pages", "url": "https://axiona-group.sk/weby/"},
-        {"@type": "ListItem", "position": 3, "name": "Automatizácie firemných procesov", "url": "https://axiona-group.sk/automatizacie/"},
-        {"@type": "ListItem", "position": 4, "name": "Dáta, dashboardy a reporty", "url": "https://axiona-group.sk/data-reporty/"},
-        {"@type": "ListItem", "position": 5, "name": "Audit webu a e-shopu", "url": "https://axiona-group.sk/audity/"}
-      ]
     }
   ]
 }
