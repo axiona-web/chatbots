@@ -40,42 +40,24 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["Organization", "ProfessionalService"],
       "@id": "https://axiona-group.sk/#organization",
       "name": "Axiona Group s. r. o.",
-      "url": "https://axiona-group.sk",
-      "taxID": "2122102708",
-      "logo": "https://axiona-group.sk/logo-web.png",
-      "email": "office@axiona-group.sk",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Za Kaštieľom 1308/2",
-        "addressLocality": "Smižany",
-        "postalCode": "053 11",
-        "addressCountry": "SK"
-      },
-      "sameAs": []
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://axiona-group.sk/#website",
-      "url": "https://axiona-group.sk",
-      "name": "Axiona Group — AI chatboty pre firmy",
-      "description": "Nasadenie AI chatbota na web. Zachytí leady 24/7, kvalifikuje záujemcov, posiela kontakty do emailu alebo CRM.",
-      "publisher": {"@id": "https://axiona-group.sk/#organization"},
-      "inLanguage": "sk-SK"
+      "alternateName": "Axiona",
+      "url": "https://axiona-group.sk"
     },
     {
       "@type": "Service",
-      "@id": "https://axiona-group.sk/#service",
+      "@id": "https://axiona-group.sk/ai-chatboty/#service",
       "name": "AI chatbot pre generovanie leadov a automatizáciu",
       "provider": {"@id": "https://axiona-group.sk/#organization"},
       "serviceType": "AI chatbot implementácia",
       "description": "Nasadenie AI chatbota na web firmy. Zachytáva leady 24/7, kvalifikuje záujemcov, integruje sa s emailom, Google Sheets alebo CRM.",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Slovakia"
-      },
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Košický kraj"},
+        {"@type": "AdministrativeArea", "name": "Prešovský kraj"},
+        {"@type": "Country", "name": "Slovensko"}
+      ],
       "offers": [
         {
           "@type": "Offer",
@@ -114,7 +96,7 @@
     },
     {
       "@type": "FAQPage",
-      "@id": "https://axiona-group.sk/#faq",
+      "@id": "https://axiona-group.sk/ai-chatboty/#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -625,7 +607,7 @@ nav{top:38px !important}.hero{padding-top:160px !important}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <h1>Zachyťte dopyty, ktoré vám dnes<br>odchádzajú <em>bez odpovede</em></h1>
+    <h1>AI chatbot pre firmy:<br>zachyťte dopyty, ktoré vám dnes odchádzajú <em>bez&nbsp;odpovede</em></h1>
     <p class="hero-sub">Nasadíme AI chatbota, ktorý odpovie na otázky, kvalifikuje záujemcu a pošle kontakt rovno vám — do emailu, Google Sheets alebo CRM.</p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="scroll2('kontakt')">Nezáväzná konzultácia</button>
