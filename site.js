@@ -2,6 +2,18 @@
 var EMAIL   = 'office@axiona-group.sk';
 var WEBHOOK = 'https://hook.eu1.make.com/2guic4tnnrc6ci6n3mqmjveaw1vhw1v8';
 
+// JAZYK STRÁNKY (sk / en / de) — texty, ktoré vypisuje JavaScript
+var LANG = (document.documentElement.lang || 'sk').slice(0, 2);
+if(['sk','en','de'].indexOf(LANG) === -1) LANG = 'sk';
+var T = {
+  sk: {menuOpen:'Otvoriť menu', menuClose:'Zavrieť menu', name:'meno a priezvisko', company:'názov firmy', email:'platný e-mail',
+       phone:'platné telefónne číslo', fill:'Doplňte prosím: ', sending:'Odosielam…', error:'Nastala chyba. Skúste znova alebo napíšte na '},
+  en: {menuOpen:'Open menu', menuClose:'Close menu', name:'full name', company:'company name', email:'a valid email',
+       phone:'a valid phone number', fill:'Please fill in: ', sending:'Sending…', error:'Something went wrong. Please try again or email us at '},
+  de: {menuOpen:'Menü öffnen', menuClose:'Menü schließen', name:'Vor- und Nachname', company:'Firmenname', email:'eine gültige E-Mail-Adresse',
+       phone:'eine gültige Telefonnummer', fill:'Bitte ergänzen Sie: ', sending:'Wird gesendet …', error:'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie an '}
+}[LANG];
+
 document.addEventListener('DOMContentLoaded', function(){
   var cel = document.getElementById('contact-email-link');
   if(cel){ cel.href = 'mailto:' + EMAIL; cel.textContent = EMAIL; }
@@ -14,7 +26,7 @@ function setNav(open){
   var n = document.querySelector('.nav-links'), b = document.querySelector('.nav-toggle');
   if(!n) return;
   n.classList.toggle('open', open);
-  if(b){ b.setAttribute('aria-expanded', open ? 'true' : 'false'); b.setAttribute('aria-label', open ? 'Zavrieť menu' : 'Otvoriť menu'); }
+  if(b){ b.setAttribute('aria-expanded', open ? 'true' : 'false'); b.setAttribute('aria-label', open ? T.menuClose : T.menuOpen); }
 }
 function toggleNav(){
   var n = document.querySelector('.nav-links'); if(!n) return;
@@ -69,9 +81,11 @@ function submitForm(){
     telefon: document.getElementById('f-phone').value.trim()
   };
   var err = validateLead(d);
+  // validateLead vracia slovenské kľúče (používa ich aj /reality/) — tu sa preložia do jazyka stránky
   var map = {'meno a priezvisko':'f-name','názov firmy':'f-company','platný e-mail':'f-email','platné telefónne číslo':'f-phone'};
+  var key = {'meno a priezvisko':'name','názov firmy':'company','platný e-mail':'email','platné telefónne číslo':'phone'};
   markInvalid(['f-name','f-company','f-email','f-phone'], err.map(function(e){ return map[e]; }));
-  if(err.length){ alert('Doplňte prosím: ' + err.join(', ') + '.'); return; }
+  if(err.length){ alert(T.fill + err.map(function(e){ return T[key[e]]; }).join(', ') + '.'); return; }
   // Honeypot: vyplnené skryté pole = robot → nič neodoslať, ale zobraziť bežné potvrdenie
   var hp = document.getElementById('f-company-website');
   if(hp && hp.value.trim()){
@@ -83,10 +97,10 @@ function submitForm(){
   var btn = document.querySelector('.form-submit');
   var btnText = btn.textContent;
   btn.disabled = true;
-  btn.textContent = 'Odosielam...';
+  btn.textContent = T.sending;
   var msgEl = document.getElementById('f-msg');
   var payload = {
-    zdroj: 'Web – ' + document.title.split('|')[0].trim(),
+    zdroj: 'Web' + (LANG === 'sk' ? '' : ' ' + LANG.toUpperCase()) + ' – ' + document.title.split('|')[0].trim(),
     meno: name,
     firma: document.getElementById('f-company').value.trim(),
     email: email,
@@ -109,7 +123,7 @@ function submitForm(){
   .catch(function(){
     btn.disabled = false;
     btn.textContent = btnText;
-    alert('Nastala chyba. Skúste znova alebo napíšte na ' + EMAIL);
+    alert(T.error + EMAIL);
   });
 }
 
@@ -138,3 +152,33 @@ function setAnalyticsConsent(granted){
 function acceptAllCookies(){setCookie('cookie_consent','all',365);setAnalyticsConsent(true);hideBanner();}
 function rejectCookies(){setCookie('cookie_consent','necessary',365);setAnalyticsConsent(false);hideBanner();}
 showBanner();
+
+// PONUKA JAZYKA PODĽA PREHLIADAČA — len ponuka, nikdy automatické presmerovanie (Google, zdieľané odkazy)
+(function(){
+  var alt = {};
+  document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(function(l){ alt[l.hreflang] = l.href; });
+  if(!alt.sk) return;
+  var pref = ((navigator.languages && navigator.languages[0]) || navigator.language || '').slice(0, 2).toLowerCase();
+  if(pref === 'cs') pref = 'sk';
+  var target = alt[pref] ? pref : (LANG === 'sk' && pref && pref !== 'sk' ? 'en' : null);
+  if(!target || target === LANG || !alt[target]) return;
+  try { if(localStorage.getItem('axiona-lang-hint') === LANG) return; } catch(e) {}
+  var txt = {sk:['Táto stránka je aj po slovensky','Prejsť →','Zavrieť'], en:['This page is also available in English','Switch →','Close'],
+             de:['Diese Seite gibt es auch auf Deutsch','Wechseln →','Schließen']}[target];
+  function show(){
+    var d = document.createElement('div');
+    d.className = 'lang-hint'; d.setAttribute('role', 'status'); d.lang = target;
+    d.innerHTML = '<span></span><a></a><button type="button">×</button>';
+    d.querySelector('button').setAttribute('aria-label', txt[2]);
+    d.firstChild.textContent = txt[0];
+    var a = d.querySelector('a'); a.href = alt[target]; a.hreflang = target; a.textContent = txt[1];
+    d.querySelector('button').addEventListener('click', function(){
+      try { localStorage.setItem('axiona-lang-hint', LANG); } catch(e) {}
+      d.remove();
+    });
+    document.body.appendChild(d);
+  }
+  // nezakrývať cookie lištu: ukázať až po jej zavretí
+  if(getCookie('cookie_consent')) setTimeout(show, 1200);
+  else { var h = hideBanner; hideBanner = function(){ h(); setTimeout(show, 400); }; }
+})();

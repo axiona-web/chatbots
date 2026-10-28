@@ -237,8 +237,8 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 .nav-toggle:focus-visible,.nav-links a:focus-visible,.nav-cta:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 /* RESPONSIVE */
-/* NAV — hamburger do 1250 px (7 položiek vrátane „Realitná únia SR“ sa na užšiu šírku nezmestí) */
-@media(max-width:1250px){
+/* NAV — hamburger do 1380 px (8 položiek + prepínač jazyka SK/EN/DE sa na užšiu šírku nezmestí) */
+@media(max-width:1380px){
   nav{padding:14px 28px}
   .nav-toggle{display:flex}
   nav .nav-cta{margin-left:auto;margin-right:12px}
