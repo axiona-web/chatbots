@@ -1491,7 +1491,7 @@ function renderMessages(typing){
   var c = document.getElementById('chat-messages');
   var html = messages.map(function(m){
     if(m.role==='card') return leadCardHtml(m);
-    return '<div class="cm '+(m.role==='user'?'user':'bot')+'"><div class="cm-bubble">'+esc(m.content)+'</div></div>';
+    return '<div class="cm '+(m.role==='user'?'user':'bot')+'"><div class="cm-bubble">'+(m.role==='user'?esc(m.content):mdLite(m.content))+'</div></div>';
   }).join('');
   if(typing) html += '<div class="cm bot"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
   c.innerHTML = html;
@@ -1569,6 +1569,13 @@ function sendLeadCard(){
   fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(){});
   card.sent = true;
   renderMessages(false);
+}
+// Odpoveď bota: základné formátovanie z Markdownu (**tučné**, *kurzíva*, odrážky) po escapovaní HTML
+function mdLite(s){
+  return esc(s)
+    .replace(/\*\*([^*<]+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[\s(])\*([^*<\s][^*<]*?)\*(?=[\s.,;:!?)]|$)/g, '$1<em>$2</em>')
+    .replace(/(^|<br>)[-•] /g, '$1• ');
 }
 function esc(s){
   return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
