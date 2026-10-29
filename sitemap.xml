@@ -1,22 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://axiona-group.sk/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/en/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/de/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/"/>
   </url>
   <url>
     <loc>https://axiona-group.sk/ai-chatboty/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/ai-chatboty/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/ai-chatbots/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/ki-chatbots/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/ai-chatbots/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/en/ai-chatbots/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/ai-chatboty/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/ai-chatbots/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/ki-chatbots/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/ai-chatbots/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/de/ki-chatbots/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/ai-chatboty/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/ai-chatbots/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/ki-chatbots/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/ai-chatbots/"/>
   </url>
   <url>
     <loc>https://axiona-group.sk/weby/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/weby/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/websites/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/webseiten/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/websites/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/en/websites/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/weby/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/websites/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/webseiten/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/websites/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/de/webseiten/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/weby/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/websites/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/webseiten/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/websites/"/>
   </url>
   <url>
     <loc>https://axiona-group.sk/automatizacie/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/automatizacie/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/automation/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/automatisierung/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/automation/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/en/automation/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/automatizacie/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/automation/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/automatisierung/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/automation/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/de/automatisierung/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/automatizacie/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/automation/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/automatisierung/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/automation/"/>
   </url>
   <url>
     <loc>https://axiona-group.sk/data-reporty/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/data-reporty/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/data-reporting/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/daten-reporting/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/data-reporting/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/en/data-reporting/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/data-reporty/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/data-reporting/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/daten-reporting/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/data-reporting/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/de/daten-reporting/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/data-reporty/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/data-reporting/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/daten-reporting/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/data-reporting/"/>
   </url>
   <url>
     <loc>https://axiona-group.sk/audity/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/audity/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/website-audit/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/website-audit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/website-audit/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/en/website-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/audity/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/website-audit/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/website-audit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/website-audit/"/>
+  </url>
+  <url>
+    <loc>https://axiona-group.sk/de/website-audit/</loc>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://axiona-group.sk/audity/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://axiona-group.sk/en/website-audit/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://axiona-group.sk/de/website-audit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://axiona-group.sk/en/website-audit/"/>
   </url>
   <url>
     <loc>https://axiona-group.sk/reality/</loc>

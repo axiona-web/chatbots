@@ -20,7 +20,7 @@ SITE = "https://axiona-group.sk"
 LANGS = ("sk", "en", "de")
 LOCALE = {"sk": "sk_SK", "en": "en_GB", "de": "de_DE"}
 # slová so slovenskou diakritikou, ktoré sú v EN/DE správne (vlastné mená, adresa, IČO/DIČ)
-ALLOW = {"IČO", "DIČ", "Kaštieľom", "Smižany", "Smižanoch", "Košice", "Spišská", "Nová", "Ves"}
+ALLOW = {"IČO", "DIČ", "Kaštieľom", "Smižany", "Smižanoch", "Košice", "Spišská", "Nová", "Ves", "Prešov", "Realitná", "únia"}
 SK_ONLY = re.compile(r"\b\w*[čťľďňôŕĺžšýáíéúČŤĽĎŇŽŠÝÁÍÉÚ]\w*\b")
 # cesty, ktoré nie sú stránky (súbory, externé časti) — odkaz na ne z EN/DE je v poriadku
 ASSET = re.compile(r"\.(png|jpe?g|svg|webp|gif|ico|css|js|pdf|xml|txt|woff2?|mp4)$|^/fonts/", re.I)
@@ -92,12 +92,27 @@ def url_to_file(url: str) -> Path | None:
 def prices(p: Page) -> list[str]:
     """Sumy v eurách, normalizované („100 €“ = „€100“ = „100,00 €“)."""
     txt = html.unescape(" ".join(p.text + p.attr_text)).replace(" ", " ")
-    found = re.findall(r"€\s?(\d[\d ]*(?:[.,]\d+)?)|(\d[\d ]*(?:[.,]\d+)?)\s?€", txt)
+    num = r"(\d{1,3}(?:[ ,.]\d{3})+(?:,\d{1,2})?|\d+(?:[.,]\d{1,2})?)"  # 180 000 / 180,000 / 180.000 / 9,90
+    found = re.findall(rf"€\s?{num}|{num}\s?€", txt)
     out = []
     for a, b in found:
-        v = (a or b).replace(" ", "").replace(",", ".")
+        v = a or b
+        if re.fullmatch(r"\d{1,3}(?:[ ,.]\d{3})+(?:,\d{1,2})?", v):
+            v = re.sub(r"[ ,.](?=\d{3})", "", v)
+        v = v.replace(",", ".")
         out.append(str(float(v)).rstrip("0").rstrip("."))
     return sorted(out, key=float)
+
+
+def removed_parts(sk_file: Path, lang: str) -> list[str]:
+    import json
+    sys.path.insert(0, str(ROOT / "tools"))
+    from i18n_build import PAGES
+    for key, pg in PAGES.items():
+        if url_to_file(pg["sk"]) == sk_file:
+            f = ROOT / "i18n" / f"{key}.{lang}.json"
+            return json.loads(f.read_text(encoding="utf-8")).get("remove", []) if f.exists() else []
+    return []
 
 
 def main() -> int:
@@ -166,7 +181,15 @@ def main() -> int:
         # ceny oproti slovenskému originálu
         sk_file = url_to_file(p.alternates.get("sk", ""))
         if sk_file in pages:
-            a, b = prices(pages[sk_file]), prices(p)
+            sk_page = pages[sk_file]
+            removed = removed_parts(sk_file, lang)
+            if removed:  # zámerne vypustené časti originálu (i18n/<stránka>.<jazyk>.json → "remove") sa do porovnania nerátajú
+                raw = sk_page.raw  # type: ignore[attr-defined]
+                for r in removed:
+                    raw = raw.replace(r, "")
+                sk_page = Page()
+                sk_page.feed(raw)
+            a, b = prices(sk_page), prices(p)
             if a != b:
                 errors.append(f"{me}: ceny nesedia so SK verziou\n      SK: {a}\n      {lang.upper()}: {b}")
 
