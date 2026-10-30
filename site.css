@@ -237,8 +237,8 @@ footer{border-top:1px solid var(--border2);padding:40px 48px}
 .nav-toggle:focus-visible,.nav-links a:focus-visible,.nav-cta:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 
 /* RESPONSIVE */
-/* NAV — hamburger do 1380 px (8 položiek + prepínač jazyka SK/EN/DE sa na užšiu šírku nezmestí) */
-@media(max-width:1380px){
+/* NAV — hamburger len na tablete a mobile (do 1024 px); na užšom desktope je menu kompaktné (theme.css) */
+@media(max-width:1024px){
   nav{padding:14px 28px}
   .nav-toggle{display:flex}
   nav .nav-cta{margin-left:auto;margin-right:12px}

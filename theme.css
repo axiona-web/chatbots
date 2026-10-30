@@ -63,3 +63,20 @@ a:has(> .logo-light),a:has(> .logo-dark){text-decoration:none}
 @media(max-width:768px){.lang-hint{bottom:84px}}
 /* s prepínačom jazyka je menu širšie — menšie medzery, aby sa položky nedotýkali tlačidla */
 @media(min-width:1381px) and (max-width:1560px){.nav-links{gap:18px}nav{padding-left:32px;padding-right:32px}}
+/* kompaktné menu na menších desktopoch (1025–1380 px): menšie logo a medzery, aby sa zmestilo bez hamburgera */
+@media(min-width:1025px) and (max-width:1380px){
+  nav{padding:12px 20px}
+  nav .logo-light{--h:50px !important}
+  nav .logo-dark{max-height:50px !important;height:50px}
+  .nav-links{gap:14px}
+  .nav-links a{font-size:13px}
+  nav .nav-cta{padding:8px 14px;font-size:12.5px}
+  .nav-end{gap:8px}
+  .lang-switch a{padding:5px 6px}
+}
+/* do 1179 px sa tlačidlo konzultácie z menu skryje (je v úvode stránky aj v kontaktoch) */
+@media(min-width:1025px) and (max-width:1179px){
+  nav .nav-cta{display:none}
+  .nav-links{gap:12px}
+  .nav-links a{font-size:12.5px}
+}

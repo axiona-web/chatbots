@@ -222,9 +222,9 @@ def switcher(key: str, lang: str) -> str:
 
 
 def versions(html: str) -> str:
-    html = re.sub(r"/theme\.css\?v=\w+", "/theme.css?v=5", html)
+    html = re.sub(r"/theme\.css\?v=\w+", "/theme.css?v=6", html)
     html = re.sub(r"/theme\.js\?v=\w+", "/theme.js?v=2", html)
-    html = re.sub(r"/site\.css\?v=\w+", "/site.css?v=20261028", html)
+    html = re.sub(r"/site\.css\?v=\w+", "/site.css?v=20261030", html)
     return re.sub(r"/site\.js\?v=\w+", "/site.js?v=20261028", html)
 
 
